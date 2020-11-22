@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29123.89
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeHub", "CodeHub.csproj", "{C8278F3E-7381-439D-B74A-66B3F783FA67}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodehubCore", "..\CodehubCore\CodehubCore.csproj", "{459B9A69-5F17-4E06-BCA3-F28798E97DB2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C8278F3E-7381-439D-B74A-66B3F783FA67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8278F3E-7381-439D-B74A-66B3F783FA67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8278F3E-7381-439D-B74A-66B3F783FA67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{459B9A69-5F17-4E06-BCA3-F28798E97DB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{459B9A69-5F17-4E06-BCA3-F28798E97DB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{459B9A69-5F17-4E06-BCA3-F28798E97DB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{459B9A69-5F17-4E06-BCA3-F28798E97DB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
