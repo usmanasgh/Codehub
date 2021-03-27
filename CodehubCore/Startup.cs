@@ -14,7 +14,8 @@ namespace CodehubCore
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        // MUA: Constructor to the startup class [Already exist].
+        public Startup(IConfiguration configuration) // MUA: [Already exist] "Constructor Injection".
         {
             Configuration = configuration;
         }
@@ -40,6 +41,28 @@ namespace CodehubCore
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            //// MUA: Access custom setting from "appsettings.json".
+            //app.Run(async (context) =>
+            //{
+            //    await context.Response
+            //    .WriteAsync(Configuration["MuaKey"]);
+            //});
+
+            // MUA: Fine the name of the process
+            //app.Run(async (context) =>
+            //{
+            //    await context.Response
+            //    .WriteAsync(System.Diagnostics.Process.GetCurrentProcess().ProcessName);
+            //});
+
+            app.Run(async (context) =>
+            {
+                await context.Response
+                .WriteAsync("I am learning .Net Core");
+            });
+
+
             //app.UseHttpsRedirection();
             //app.UseStaticFiles();
 
@@ -53,12 +76,6 @@ namespace CodehubCore
             //        name: "default",
             //        pattern: "{controller=Home}/{action=Index}/{id?}");
             //});
-
-            app.Run(async (context) =>
-            {
-                await context.Response
-                .WriteAsync(System.Diagnostics.Process.GetCurrentProcess().ProcessName);
-            });
         }
     }
 }

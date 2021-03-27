@@ -9,19 +9,24 @@ namespace CodeHub.Controllers
     public class DefaultController : Controller
     {
         // GET: Default
-        public ActionResult Index()
+        public ActionResult Login1()
         {
-            return View("Login1");
+            return View();
         }
 
         [HttpPost]
-        public ActionResult Index(CodeHub.ViewModel.Login Model)
+        public ActionResult Login1(CodeHub.ViewModel.Login Model)
         {
             if(Model.UserName=="123" && Model.Password=="123")
             {
-
+                return RedirectToAction("Index");
             }
             return View("Login1");
+        }
+
+        public ActionResult Index()
+        {
+            return View();
         }
     }
 }
