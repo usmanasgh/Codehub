@@ -303,7 +303,6 @@ C:\Users\usman\source\repos\CodeHub\Source\bin\System.Net.Http.Formatting.xml
 C:\Users\usman\source\repos\CodeHub\Source\bin\System.Web.Http.xml
 C:\Users\usman\source\repos\CodeHub\Source\bin\System.Web.Http.WebHost.xml
 C:\Users\usman\source\repos\CodeHub\Source\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\usman\source\repos\CodeHub\Source\obj\Debug\CodeHub.csprojAssemblyReference.cache
 C:\Users\usman\source\repos\CodeHub\Source\obj\Debug\CodeHub.csproj.CoreCompileInputs.cache
 C:\Users\usman\source\repos\CodeHub\Source\obj\Debug\CodeHub.csproj.CopyComplete
 C:\Users\usman\source\repos\CodeHub\Source\obj\Debug\CodeHub.dll

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\usman\\source\\repos\\Codehub\\CodehubCore\\CodehubCore.csproj": {}
+    "C:\\Users\\usman\\source\\repos\\CodeHub\\CodehubCore\\CodehubCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\usman\\source\\repos\\Codehub\\CodehubCore\\CodehubCore.csproj": {
+    "C:\\Users\\usman\\source\\repos\\CodeHub\\CodehubCore\\CodehubCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\usman\\source\\repos\\Codehub\\CodehubCore\\CodehubCore.csproj",
+        "projectUniqueName": "C:\\Users\\usman\\source\\repos\\CodeHub\\CodehubCore\\CodehubCore.csproj",
         "projectName": "CodehubCore",
-        "projectPath": "C:\\Users\\usman\\source\\repos\\Codehub\\CodehubCore\\CodehubCore.csproj",
+        "projectPath": "C:\\Users\\usman\\source\\repos\\CodeHub\\CodehubCore\\CodehubCore.csproj",
         "packagesPath": "C:\\Users\\usman\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\usman\\source\\repos\\Codehub\\CodehubCore\\obj\\",
+        "outputPath": "C:\\Users\\usman\\source\\repos\\CodeHub\\CodehubCore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\usman\\AppData\\Roaming\\NuGet\\NuGet.Config",
