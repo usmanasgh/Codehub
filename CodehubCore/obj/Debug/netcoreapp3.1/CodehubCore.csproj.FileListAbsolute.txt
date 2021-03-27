@@ -9,7 +9,6 @@ C:\Users\usman\source\repos\CodeHub\CodehubCore\bin\Debug\netcoreapp3.1\CodehubC
 C:\Users\usman\source\repos\CodeHub\CodehubCore\bin\Debug\netcoreapp3.1\CodehubCore.pdb
 C:\Users\usman\source\repos\CodeHub\CodehubCore\bin\Debug\netcoreapp3.1\CodehubCore.Views.dll
 C:\Users\usman\source\repos\CodeHub\CodehubCore\bin\Debug\netcoreapp3.1\CodehubCore.Views.pdb
-C:\Users\usman\source\repos\CodeHub\CodehubCore\obj\Debug\netcoreapp3.1\CodehubCore.csprojAssemblyReference.cache
 C:\Users\usman\source\repos\CodeHub\CodehubCore\obj\Debug\netcoreapp3.1\CodehubCore.csproj.CoreCompileInputs.cache
 C:\Users\usman\source\repos\CodeHub\CodehubCore\obj\Debug\netcoreapp3.1\CodehubCore.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\usman\source\repos\CodeHub\CodehubCore\obj\Debug\netcoreapp3.1\CodehubCore.RazorAssemblyInfo.cache
