@@ -1,0 +1,16 @@
+# ignore ALL .log files
+*.log
+*.suo
+
+# ignore ALL files in ANY directory named temp
+*/CodehubCore/bin/Debug/netcoreapp3.1/
+
+*/CodehubCore/obj/
+
+*/Source/bin/
+
+*/Source/obj/Debug/
+
+
+# ignore visual studio versions
+*/Source/.vs/Codehub/v16/
