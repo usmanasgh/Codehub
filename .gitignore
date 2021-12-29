@@ -1,0 +1,13 @@
+#ignore .suo file
+**.suo
+
+#ignore folders
+**/CodehubCore/Obj/Debug/NetCoreapp3.1
+
+**/CodehubCore/Obj/
+
+**/Source/.vs/Codehub/
+
+**/Source/bin/
+
+**/Source/obj/Debug/
