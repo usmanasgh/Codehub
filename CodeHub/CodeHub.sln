@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeHub", "CodeHub.csproj",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeHub.Tests", "..\CodeHub.Tests\CodeHub.Tests.csproj", "{9255AF5D-386F-4782-827E-2C0CC798C5E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor WebAssembly .NetCore 5.0", "..\Blazor WebAssembly .NetCore 5.0\Blazor WebAssembly .NetCore 5.0.csproj", "{96F57459-D6BC-4BAD-8E35-0EE2836B9BED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9255AF5D-386F-4782-827E-2C0CC798C5E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9255AF5D-386F-4782-827E-2C0CC798C5E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9255AF5D-386F-4782-827E-2C0CC798C5E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96F57459-D6BC-4BAD-8E35-0EE2836B9BED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96F57459-D6BC-4BAD-8E35-0EE2836B9BED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96F57459-D6BC-4BAD-8E35-0EE2836B9BED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96F57459-D6BC-4BAD-8E35-0EE2836B9BED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
