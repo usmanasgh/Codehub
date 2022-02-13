@@ -26,5 +26,12 @@ namespace CodeHub.Controllers
 
             return View();
         }
+
+        public ActionResult Webeditor()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
     }
 }

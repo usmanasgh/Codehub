@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .button {
+        width: 100px;
+        height: 40px;
+        margin: 5px;
+        margin-left: 410px;
+    }
+</style>
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+
+<h2>Run my Code</h2>
+
+<input class="button" id="mybutton" type="button" value="Run" onclick="TestCode();" />
+<div id="mydiv" contenteditable="true" style="height:400px;width:500px;border:solid 5px grey;">
+    This is my test
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        console.log("ready!");
+    });
+
+    function TestCode() {
+        var w = window.open();
+        var html = $("#mydiv").text();
+
+        $(w.document.body).html($.parseHTML(html));
+    }
+
+    
+</script>
