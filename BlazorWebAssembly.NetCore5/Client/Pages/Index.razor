@@ -1,0 +1,62 @@
+﻿@page "/"
+@using BlazorWebAssembly.NetCore5.Shared;
+@using Syncfusion.Blazor.Grids;
+
+
+<h1>Hello, world!</h1>
+
+@code{
+    string BlazorAppVariable = "Blazor Web Assembly";
+}
+
+Welcome to your new app @BlazorAppVariable.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+@code{
+
+    public List<User> UsersList { get; set; }
+
+    protected override void OnInitialized()
+    {
+        UsersList = LoadData();
+    }
+
+    private List<User> LoadData()
+    {
+        User user = new User();
+        user.Id = Guid.Empty;
+        user.FirstName = "Usman";
+        user.LastName = "Asghar";
+        user.Username = "Admin";
+        user.Role = 1;
+        user.Phone = "Test";
+        user.Email = "usmanasgh@gmail.com";
+
+        List<User> UserList = new List<User>();
+        UserList.Add(user);
+
+        return UserList;
+    }
+
+}
+
+<SfGrid DataSource="@UsersList">
+    <GridColumn>
+        <GridColumn Field="@nameof(User.Username)" HeaderText="Username"></GridColumn>
+        <GridColumn Field="@nameof(User.Username)" HeaderText="Username"></GridColumn>
+        <GridColumn Field="@nameof(User.Username)" HeaderText="Username"></GridColumn>
+        <GridColumn Field="@nameof(User.Username)" HeaderText="Username"></GridColumn>
+        <GridColumn Field="@nameof(User.Username)" HeaderText="Username"></GridColumn>
+    </GridColumn>
+</SfGrid>
+
+<div>
+    <h2>Test users list</h2>
+    <ul>
+        @foreach (var a in UsersList)
+        {
+            <li>@a.Username</li>
+        }
+    </ul>
+</div>

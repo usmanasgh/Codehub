@@ -1,0 +1,16 @@
+﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="/" Path="C:\Users\usman\source\repos\Codehub\BlazorWebAssembly.NetCore5\Client\bin\Debug\net5.0\wwwroot\" />
+  <ContentRoot BasePath="/" Path="C:\Users\usman\source\repos\Codehub\BlazorWebAssembly.NetCore5\Client\obj\Debug\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.Calendars" Path="C:\Users\usman\.nuget\packages\syncfusion.blazor.calendars\19.4.0.52\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.Core" Path="C:\Users\usman\.nuget\packages\syncfusion.blazor.core\19.4.0.52\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.Data" Path="C:\Users\usman\.nuget\packages\syncfusion.blazor.data\19.4.0.52\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.DropDowns" Path="C:\Users\usman\.nuget\packages\syncfusion.blazor.dropdowns\19.4.0.52\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.Grid" Path="C:\Users\usman\.nuget\packages\syncfusion.blazor.grid\19.4.0.52\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.Inputs" Path="C:\Users\usman\.nuget\packages\syncfusion.blazor.inputs\19.4.0.52\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.Lists" Path="C:\Users\usman\.nuget\packages\syncfusion.blazor.lists\19.4.0.52\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.Navigations" Path="C:\Users\usman\.nuget\packages\syncfusion.blazor.navigations\19.4.0.52\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.Popups" Path="C:\Users\usman\.nuget\packages\syncfusion.blazor.popups\19.4.0.52\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.Spinner" Path="C:\Users\usman\.nuget\packages\syncfusion.blazor.spinner\19.4.0.52\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.SplitButtons" Path="C:\Users\usman\.nuget\packages\syncfusion.blazor.splitbuttons\19.4.0.52\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.Themes" Path="C:\Users\usman\.nuget\packages\syncfusion.blazor.themes\19.4.0.52\build\..\staticwebassets\" />
+</StaticWebAssets>

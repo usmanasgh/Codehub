@@ -49,8 +49,8 @@ C:\Users\usman\source\repos\Codehub\CodeHub\bin\System.Web.WebPages.Razor.xml
 C:\Users\usman\source\repos\Codehub\CodeHub\bin\Newtonsoft.Json.xml
 C:\Users\usman\source\repos\Codehub\CodeHub\bin\Antlr3.Runtime.pdb
 C:\Users\usman\source\repos\Codehub\CodeHub\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\usman\source\repos\Codehub\CodeHub\obj\Debug\CodeHub.csproj.AssemblyReference.cache
 C:\Users\usman\source\repos\Codehub\CodeHub\obj\Debug\CodeHub.csproj.CoreCompileInputs.cache
 C:\Users\usman\source\repos\Codehub\CodeHub\obj\Debug\CodeHub.csproj.CopyComplete
 C:\Users\usman\source\repos\Codehub\CodeHub\obj\Debug\CodeHub.dll
 C:\Users\usman\source\repos\Codehub\CodeHub\obj\Debug\CodeHub.pdb
-C:\Users\usman\source\repos\Codehub\CodeHub\obj\Debug\CodeHub.csproj.AssemblyReference.cache
