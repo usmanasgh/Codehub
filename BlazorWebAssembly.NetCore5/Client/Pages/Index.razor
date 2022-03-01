@@ -24,6 +24,8 @@ Welcome to your new app @BlazorAppVariable.
 
     private List<User> LoadData()
     {
+        List<User> UserList = new List<User>();
+
         User user = new User();
         user.Id = Guid.Empty;
         user.FirstName = "Usman";
@@ -32,9 +34,18 @@ Welcome to your new app @BlazorAppVariable.
         user.Role = 1;
         user.Phone = "Test";
         user.Email = "usmanasgh@gmail.com";
-
-        List<User> UserList = new List<User>();
         UserList.Add(user);
+
+        user = new User();
+        user.Id = Guid.Empty;
+        user.FirstName = "Humayun";
+        user.LastName = "Asghar";
+        user.Username = "Admin";
+        user.Role = 1;
+        user.Phone = "Test";
+        user.Email = "Humayun@gmail.com";
+        UserList.Add(user);
+
 
         return UserList;
     }
@@ -44,10 +55,10 @@ Welcome to your new app @BlazorAppVariable.
 <SfGrid DataSource="@UsersList">
     <GridColumn>
         <GridColumn Field="@nameof(User.Username)" HeaderText="Username"></GridColumn>
-        <GridColumn Field="@nameof(User.Username)" HeaderText="Username"></GridColumn>
-        <GridColumn Field="@nameof(User.Username)" HeaderText="Username"></GridColumn>
-        <GridColumn Field="@nameof(User.Username)" HeaderText="Username"></GridColumn>
-        <GridColumn Field="@nameof(User.Username)" HeaderText="Username"></GridColumn>
+        <GridColumn Field="@nameof(User.FirstName)" HeaderText="FirstName"></GridColumn>
+        <GridColumn Field="@nameof(User.LastName)" HeaderText="LastName"></GridColumn>
+        <GridColumn Field="@nameof(User.Email)" HeaderText="Email"></GridColumn>
+        <GridColumn Field="@nameof(User.Phone)" HeaderText="Phone"></GridColumn>
     </GridColumn>
 </SfGrid>
 
@@ -56,7 +67,7 @@ Welcome to your new app @BlazorAppVariable.
     <ul>
         @foreach (var a in UsersList)
         {
-            <li>@a.Username</li>
+            <li>@a.Username ++ @a.FirstName</li>
         }
     </ul>
 </div>

@@ -132,6 +132,8 @@ using Syncfusion.Blazor.Grids;
 
     private List<User> LoadData()
     {
+        List<User> UserList = new List<User>();
+
         User user = new User();
         user.Id = Guid.Empty;
         user.FirstName = "Usman";
@@ -140,9 +142,18 @@ using Syncfusion.Blazor.Grids;
         user.Role = 1;
         user.Phone = "Test";
         user.Email = "usmanasgh@gmail.com";
-
-        List<User> UserList = new List<User>();
         UserList.Add(user);
+
+        user = new User();
+        user.Id = Guid.Empty;
+        user.FirstName = "Humayun";
+        user.LastName = "Asghar";
+        user.Username = "Admin";
+        user.Role = 1;
+        user.Phone = "Test";
+        user.Email = "Humayun@gmail.com";
+        UserList.Add(user);
+
 
         return UserList;
     }
