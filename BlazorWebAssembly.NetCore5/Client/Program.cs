@@ -20,7 +20,8 @@ namespace BlazorWebAssembly.NetCore5.Client
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-            builder.Services.AddSyncfusionBlazor(); // MUA: Addedd reference dependancies.
+            //builder.Services.AddSyncfusionBlazor(); // MUA: Addedd reference dependancies.
+            builder.Services.AddSyncfusionBlazor(options => { options.IgnoreScriptIsolation = true; });
 
             await builder.Build().RunAsync();
         }

@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
+using Syncfusion.Blazor;
 
 namespace BlazorWebAssembly.NetCore5.Server
 {
@@ -25,11 +26,13 @@ namespace BlazorWebAssembly.NetCore5.Server
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddSyncfusionBlazor(); // MUA : Add new reference
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTkxMzc2QDMxMzkyZTM0MmUzME1Va0VnTi9qKzZCa2xZS0FXamVUa3BDK3ladjNtOHRSRGpMQm9KeThpL1U9");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

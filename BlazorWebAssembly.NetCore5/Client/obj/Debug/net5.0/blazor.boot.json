@@ -211,13 +211,13 @@
       "mscorlib.dll": "sha256-pOPJrGSp+RVyYmvcT+PTaEq9fVhEFzvMs\/3Ue3S2j+A=",
       "netstandard.dll": "sha256-bY3Q1RCB\/lmUAo5AG5YDHBu5uD8OxCGAiJ+wukrs1pw=",
       "System.Private.CoreLib.dll": "sha256-25IZl0xgoqOBdkTlEjUBLmiiRGYCYI1BaFevKzE+EHk=",
-      "BlazorWebAssembly.NetCore5.Shared.dll": "sha256-kNNM03sjPXbIkGtBSZ1T2BDJzsV3lPg3DtxgPHNCapA=",
-      "BlazorWebAssembly.NetCore5.Client.dll": "sha256-Xca0\/xiJKh8t5sSO6kA18Q8Rahozdilu\/R5O2aKcOro="
+      "BlazorWebAssembly.NetCore5.Shared.dll": "sha256-rL3Oh0Hbzv8l3fO6OAI5KVe+6nSi4JATbQuGSsuTkew=",
+      "BlazorWebAssembly.NetCore5.Client.dll": "sha256-Pp6L94hY5jvPrcW0nxYYa+T1FEt8\/mo8vUW6dlpP+AA="
     },
     "lazyAssembly": null,
     "pdb": {
-      "BlazorWebAssembly.NetCore5.Shared.pdb": "sha256-7WdZj07R4iZbHsaY8COCiep\/shuR9767uc30WntDjyc=",
-      "BlazorWebAssembly.NetCore5.Client.pdb": "sha256-cMT8YBkks\/2FqDaYIbc\/NadYJDJlTPSo74ug11kqncI="
+      "BlazorWebAssembly.NetCore5.Shared.pdb": "sha256-i6kED0tY1SyMoY3q+9ErVCJ5p4Oy2VGmwJ+Kutd6A4M=",
+      "BlazorWebAssembly.NetCore5.Client.pdb": "sha256-I5SRx5siTui1hJyTjQEjOqQkPjiTSUY+SzCn+0VdQFc="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-Ek+C0V\/4GBnUGH1\/X20UjHhjyp7se2MX+2RHWSpKSDE=",
