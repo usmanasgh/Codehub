@@ -15,6 +15,8 @@ namespace BlazorWebAssembly.NetCore5.Client
     {
         public static async Task Main(string[] args)
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTkxMzc2QDMxMzkyZTM0MmUzME1Va0VnTi9qKzZCa2xZS0FXamVUa3BDK3ladjNtOHRSRGpMQm9KeThpL1U9");
+
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
 

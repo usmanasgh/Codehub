@@ -287,4 +287,6 @@ __pycache__/
 # Cake - Uncomment if you are using it
 # tools/
 
+*net5.0/
+
 # End of https://www.toptal.com/developers/gitignore/api/aspnetcore
