@@ -63,7 +63,7 @@ Welcome to your new app @BlazorAppVariable.
             FirstName = "Usman",
             LastName = "Asghar",
             Username = "Admin",
-            Role = Enums.Role.Admin,
+            Role = new Role { Id = Enums.Role.Admin, Name = "Administrator", ShortName = "Admin" },
             Phone = "Test",
             Email = "usmanasgh@gmail.com"
         };
@@ -74,7 +74,7 @@ Welcome to your new app @BlazorAppVariable.
             FirstName = "Humayun",
             LastName = "Asghar",
             Username = "Admin",
-            Role = Role = Enums.Role.standard,
+            Role = new Role { Id = Enums.Role.standard, Name = "Standard", ShortName = "Std" },
             Phone = "Test",
             Email = "usmanasgh@gmail.com"
         };

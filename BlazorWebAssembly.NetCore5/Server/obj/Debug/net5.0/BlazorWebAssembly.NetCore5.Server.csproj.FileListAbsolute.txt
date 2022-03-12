@@ -77,3 +77,9 @@ C:\Users\usman\source\repos\Codehub\BlazorWebAssembly.NetCore5\Server\obj\Debug\
 C:\Users\usman\source\repos\Codehub\BlazorWebAssembly.NetCore5\Server\obj\Debug\net5.0\ref\BlazorWebAssembly.NetCore5.Server.dll
 C:\Users\usman\source\repos\Codehub\BlazorWebAssembly.NetCore5\Server\obj\Debug\net5.0\BlazorWebAssembly.NetCore5.Server.pdb
 C:\Users\usman\source\repos\Codehub\BlazorWebAssembly.NetCore5\Server\obj\Debug\net5.0\BlazorWebAssembly.NetCore5.Server.genruntimeconfig.cache
+C:\Users\usman\source\repos\Codehub\BlazorWebAssembly.NetCore5\Server\bin\Debug\net5.0\Humanizer.dll
+C:\Users\usman\source\repos\Codehub\BlazorWebAssembly.NetCore5\Server\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\usman\source\repos\Codehub\BlazorWebAssembly.NetCore5\Server\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\usman\source\repos\Codehub\BlazorWebAssembly.NetCore5\Server\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\usman\source\repos\Codehub\BlazorWebAssembly.NetCore5\Server\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\usman\source\repos\Codehub\BlazorWebAssembly.NetCore5\Server\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll

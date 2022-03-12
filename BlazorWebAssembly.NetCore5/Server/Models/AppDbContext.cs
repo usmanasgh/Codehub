@@ -31,7 +31,7 @@ namespace BlazorWebAssembly.NetCore5.Server.Models
                 FirstName = "Usman",
                 LastName = "Asghar",
                 Username = "Admin",
-                Role = Enums.Role.Admin,
+                Role = new Role { Id = Enums.Role.Admin, Name = "Administrator", ShortName = "Admin" },
                 Phone = "Test",
                 Email = "usmanasgh@gmail.com"
             });
