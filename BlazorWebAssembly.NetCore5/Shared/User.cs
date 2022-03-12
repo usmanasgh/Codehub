@@ -12,6 +12,6 @@ namespace BlazorWebAssembly.NetCore5.Shared
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public int? Role { get; set; }
+        public Role Role { get; set; }
     }
 }

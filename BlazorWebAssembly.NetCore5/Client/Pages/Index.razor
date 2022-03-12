@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using BlazorWebAssembly.NetCore5.Shared;
+@using BlazorWebAssembly.NetCore5.Shared.Common;
 @using Syncfusion.Blazor;
 @using Syncfusion.Blazor.Grids;
 
@@ -62,7 +63,7 @@ Welcome to your new app @BlazorAppVariable.
             FirstName = "Usman",
             LastName = "Asghar",
             Username = "Admin",
-            Role = 1,
+            Role = Enums.Role.Admin,
             Phone = "Test",
             Email = "usmanasgh@gmail.com"
         };
@@ -73,7 +74,7 @@ Welcome to your new app @BlazorAppVariable.
             FirstName = "Humayun",
             LastName = "Asghar",
             Username = "Admin",
-            Role = 1,
+            Role = Role = Enums.Role.standard,
             Phone = "Test",
             Email = "usmanasgh@gmail.com"
         };
