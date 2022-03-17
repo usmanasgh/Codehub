@@ -10,7 +10,7 @@ namespace BlazorWebAssemblyApp.Shared.Common
     {
         public enum Role
         {
-            Admin = 1, standard
+            Admin = 1, Standard
         }
 
     }

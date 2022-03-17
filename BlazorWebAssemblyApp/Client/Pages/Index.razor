@@ -57,7 +57,7 @@ Welcome to your new app.
             FirstName = "Usman",
             LastName = "Asghar",
             Username = "Admin",
-            Role = new Role { Id = Enums.Role.Admin, Name = "Administrator", ShortName = "Admin" },
+            RoleId = (int)Enums.Role.Admin,
             Phone = "Test",
             Email = "usmanasgh@gmail.com"
         };
@@ -68,7 +68,7 @@ Welcome to your new app.
             FirstName = "Humayun",
             LastName = "Asghar",
             Username = "Admin",
-            Role = new Role { Id = Enums.Role.standard, Name = "Standard", ShortName = "Std" },
+            RoleId = (int)Enums.Role.Standard,
             Phone = "Test",
             Email = "usmanasgh@gmail.com"
         };
@@ -85,18 +85,18 @@ Welcome to your new app.
         <GridColumn Field="@nameof(User.Username)" HeaderText="Username"></GridColumn>
         <GridColumn Field="@nameof(User.FirstName)" HeaderText="FirstName"></GridColumn>
         <GridColumn Field="@nameof(User.LastName)" HeaderText="LastName"></GridColumn>
-        <GridColumn Field="@nameof(User.Role.Name)" HeaderText="Role"></GridColumn>
+        <GridColumn Field="@nameof(User.RoleId)" HeaderText="Role"></GridColumn>
         <GridColumn Field="@nameof(User.Phone)" HeaderText="Phone"></GridColumn>
     </GridColumns>
 </SfGrid>
 
-<p>
+@*<p>
     <br /><br /><h3>Test Values:</h3>
     @foreach(var i in UsersList)
     {
-    <a>@i.Role.Name.ToString()</a><br />
+    <a>@i.Rol.Name.ToString()</a><br />
     }
-</p>
+</p>*@
 
 @*<SfGrid DataSource="@Orders" AllowPaging="true" AllowSorting="true">
         <GridPageSettings PageSize="5"></GridPageSettings>
