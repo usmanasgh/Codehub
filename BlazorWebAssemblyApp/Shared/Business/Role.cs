@@ -11,7 +11,7 @@ namespace BlazorWebAssemblyApp.Shared.Business
     public class Role
     {
         [Key]
-        public Enums.Role Id { get; set; }
+        public int Id { get; set; }
         
         [Required]
         public string Name { get; set; }

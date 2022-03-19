@@ -23,8 +23,8 @@ namespace BlazorWebAssemblyApp.Server.Models
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Role>().HasData(new Role { Id = Enums.Role.Admin, Name = "Administrator", ShortName = "Admin" });
-            modelBuilder.Entity<Role>().HasData(new Role { Id = Enums.Role.Standard, Name = "Standard", ShortName = "Std" });
+            modelBuilder.Entity<Role>().HasData(new Role { Id = (int)Enums.Role.Admin, Name = "Administrator", ShortName = "Admin" });
+            modelBuilder.Entity<Role>().HasData(new Role { Id = (int)Enums.Role.Standard, Name = "Standard", ShortName = "Std" });
 
             modelBuilder.Entity<User>().HasData(new User
             {

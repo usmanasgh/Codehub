@@ -26,7 +26,7 @@ namespace BlazorWebAssemblyApp.Shared.Business
         [Display(Name = "Role")]
         public virtual int RoleId { get; set; }
 
-        //[ForeignKey("RoleId")]
-        //public virtual Role Roles { get; set; }
+        [ForeignKey("RoleId")]
+        public virtual Role Roles { get; set; }
     }
 }

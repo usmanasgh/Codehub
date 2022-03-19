@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Syncfusion.Blazor;
 using BlazorWebAssemblyApp.Server.Models;
 using Microsoft.EntityFrameworkCore;
+using BlazorWebAssemblyApp.Server.Interface;
 using System.Linq;
 
 namespace BlazorWebAssemblyApp.Server
@@ -25,9 +26,11 @@ namespace BlazorWebAssemblyApp.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            // MUA: Add db service
+            // MUA: Add DbContext Service
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
+            services.AddScoped<IUserRepository, UserRepository>();
 
+            
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddSyncfusionBlazor(); // MUA : Add new reference
