@@ -15,6 +15,8 @@ namespace BlazorWebAssemblyApp.Shared.Business
         
         [Required]
         public string Username { get; set; }
+        [Required]
+        [MinLength(2, ErrorMessage = "FirstName must contains at least 2 characters")]
         public string FirstName { get; set; }
         public string LastName { get; set; }
         

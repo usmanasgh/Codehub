@@ -17,6 +17,11 @@ namespace BlazorWebAssemblyApp.Server.Models
         }
         public async Task<User> AddUser(User user)
         {
+            if(user.Roles != null)
+            {
+                appDbContext.Entry(user.Roles).State = EntityState.Unchanged; // MUA: Ignore to create new entry for new roles
+            }
+            
             var result = await appDbContext.Users.AddAsync(user);
             await appDbContext.SaveChangesAsync();
             return result.Entity;
