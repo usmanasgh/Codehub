@@ -8,22 +8,79 @@
 
 Welcome to your new app.
 
+<SurveyPrompt Title="How is Blazor working for you?" />
 
 @code{
 
-    public List<User> Users { get; set; }
+    public List<User> UsersList { get; set; }
 
-    [Inject]
-    public IUserService UserService { get; set; }
-
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
-        Users = (await UserService.GetUsers()).ToList();
+        UsersList = LoadData();
+    }
+
+    //private List<User> LoadData()
+    //{
+    //    List<User> UserList = new List<User>();
+
+    //    User user = new User();
+    //    user.Id = Guid.Empty;
+    //    user.FirstName = "Usman";
+    //    user.LastName = "Asghar";
+    //    user.Username = "Admin";
+    //    user.Role = 1;
+    //    user.Phone = "Test";
+    //    user.Email = "usmanasgh@gmail.com";
+    //    UserList.Add(user);
+
+    //    User user2 = new User();
+    //    user2.Id = Guid.Empty;
+    //    user2.FirstName = "Humayun";
+    //    user2.LastName = "Asghar";
+    //    user2.Username = "Admin";
+    //    user2.Role = 1;
+    //    user2.Phone = "Test";
+    //    user2.Email = "Humayun@gmail.com";
+    //    UserList.Add(user2);
+
+
+    //    return UserList;
+    //}
+
+    private List<User> LoadData()
+    {
+        List<User> UserList = new List<User>();
+
+        User user = new User
+        {
+            Id = new Guid(),
+            FirstName = "Usman",
+            LastName = "Asghar",
+            Username = "Admin",
+            RoleId = (int)Enums.Role.Admin,
+            Phone = "Test",
+            Email = "usmanasgh@gmail.com"
+        };
+
+        User user2 = new User
+        {
+            Id = new Guid(),
+            FirstName = "Humayun",
+            LastName = "Asghar",
+            Username = "Admin",
+            RoleId = (int)Enums.Role.Standard,
+            Phone = "Test",
+            Email = "usmanasgh@gmail.com"
+        };
+
+
+        return new List<User> { user, user2 };
     }
 }
 
 
-<SfGrid DataSource="@Users">
+
+<SfGrid DataSource="@UsersList">
     <GridColumns>
         <GridColumn Field="@nameof(User.Username)" HeaderText="Username"></GridColumn>
         <GridColumn Field="@nameof(User.FirstName)" HeaderText="FirstName"></GridColumn>
@@ -32,6 +89,14 @@ Welcome to your new app.
         <GridColumn Field="@nameof(User.Phone)" HeaderText="Phone"></GridColumn>
     </GridColumns>
 </SfGrid>
+
+@*<p>
+    <br /><br /><h3>Test Values:</h3>
+    @foreach(var i in UsersList)
+    {
+    <a>@i.Rol.Name.ToString()</a><br />
+    }
+</p>*@
 
 @*<SfGrid DataSource="@Orders" AllowPaging="true" AllowSorting="true">
         <GridPageSettings PageSize="5"></GridPageSettings>
