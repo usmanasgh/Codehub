@@ -8,6 +8,23 @@
 
 Welcome to your new app.
 
+@if (Users == null)
+{
+    <SfSpinner Visible="true"></SfSpinner>
+}
+else
+{
+    <SfGrid DataSource="@Users">
+        <GridColumns>
+            <GridColumn Field="@nameof(User.Username)" HeaderText="Username"></GridColumn>
+            <GridColumn Field="@nameof(User.FirstName)" HeaderText="FirstName"></GridColumn>
+            <GridColumn Field="@nameof(User.LastName)" HeaderText="LastName"></GridColumn>
+            <GridColumn Field="@nameof(User.RoleId)" HeaderText="Role"></GridColumn>
+            <GridColumn Field="@nameof(User.Phone)" HeaderText="Phone"></GridColumn>
+        </GridColumns>
+    </SfGrid>
+}
+
 
 @code{
 
@@ -18,20 +35,10 @@ Welcome to your new app.
 
     protected override async Task OnInitializedAsync()
     {
+        await Task.Delay(3000); // MUA : for showing up spinner
         Users = (await UserService.GetUsers()).ToList();
     }
 }
-
-
-<SfGrid DataSource="@Users">
-    <GridColumns>
-        <GridColumn Field="@nameof(User.Username)" HeaderText="Username"></GridColumn>
-        <GridColumn Field="@nameof(User.FirstName)" HeaderText="FirstName"></GridColumn>
-        <GridColumn Field="@nameof(User.LastName)" HeaderText="LastName"></GridColumn>
-        <GridColumn Field="@nameof(User.RoleId)" HeaderText="Role"></GridColumn>
-        <GridColumn Field="@nameof(User.Phone)" HeaderText="Phone"></GridColumn>
-    </GridColumns>
-</SfGrid>
 
 @*<SfGrid DataSource="@Orders" AllowPaging="true" AllowSorting="true">
         <GridPageSettings PageSize="5"></GridPageSettings>
