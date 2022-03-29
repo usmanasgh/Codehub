@@ -1,0 +1,74 @@
+﻿@page "/"
+@using BlazorWebAssemblyApp.Shared.Common;
+@using BlazorWebAssemblyApp.Shared.Business;
+@using Syncfusion.Blazor;
+@using Syncfusion.Blazor.Grids;
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+@if (Users == null)
+{
+    <SfSpinner Visible="true"></SfSpinner>
+}
+else
+{
+    <SfGrid DataSource="@Users">
+        <GridColumns>
+            <GridColumn Field="@nameof(User.Username)" HeaderText="Username"></GridColumn>
+            <GridColumn Field="@nameof(User.FirstName)" HeaderText="FirstName"></GridColumn>
+            <GridColumn Field="@nameof(User.LastName)" HeaderText="LastName"></GridColumn>
+            <GridColumn Field="@nameof(User.RoleId)" HeaderText="Role"></GridColumn>
+            <GridColumn Field="@nameof(User.Phone)" HeaderText="Phone"></GridColumn>
+        </GridColumns>
+    </SfGrid>
+}
+
+
+@code{
+
+    public List<User> Users { get; set; }
+
+    [Inject]
+    public IUserService UserService { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(3000); // MUA : for showing up spinner
+        Users = (await UserService.GetUsers()).ToList();
+    }
+}
+
+@*<SfGrid DataSource="@Orders" AllowPaging="true" AllowSorting="true">
+        <GridPageSettings PageSize="5"></GridPageSettings>
+        <GridColumns>
+            <GridColumn Field=@nameof(Order.OrderID) HeaderText="Order ID" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+            <GridColumn Field=@nameof(Order.CustomerID) HeaderText="Customer Name" Width="150"></GridColumn>
+            <GridColumn Field=@nameof(Order.OrderDate) HeaderText=" Order Date" Format="d" Type="ColumnType.Date" TextAlign="TextAlign.Right" Width="130"></GridColumn>
+            <GridColumn Field=@nameof(Order.Freight) HeaderText="Freight" Format="C2" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+        </GridColumns>
+    </SfGrid>
+
+    @code{
+        public List<Order> Orders { get; set; }
+
+        protected override void OnInitialized()
+        {
+            Orders = Enumerable.Range(1, 75).Select(x => new Order()
+            {
+                OrderID = 1000 + x,
+                CustomerID = (new string[] { "ALFKI", "ANANTR", "ANTON", "BLONP", "BOLID" })[new Random().Next(5)],
+                Freight = 2.1 * x,
+                OrderDate = DateTime.Now.AddDays(-x),
+            }).ToList();
+        }
+
+        public class Order
+        {
+            public int? OrderID { get; set; }
+            public string CustomerID { get; set; }
+            public DateTime? OrderDate { get; set; }
+            public double? Freight { get; set; }
+        }
+    }*@
