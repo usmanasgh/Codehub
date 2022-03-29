@@ -9,11 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeHub.Tests", "..\CodeHub
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BlazorWebAssembly.NetCore5.0", "BlazorWebAssembly.NetCore5.0", "{2B988605-F4B9-4593-882B-250C2144AE4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWebAssemblyApp.Server", "..\BlazorWebAssemblyApp\Server\BlazorWebAssemblyApp.Server.csproj", "{EBDA1C47-04FB-4F84-A5A9-76F663A90126}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebAssemblyApp.Server", "..\BlazorWebAssemblyApp\Server\BlazorWebAssemblyApp.Server.csproj", "{EBDA1C47-04FB-4F84-A5A9-76F663A90126}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWebAssemblyApp.Client", "..\BlazorWebAssemblyApp\Client\BlazorWebAssemblyApp.Client.csproj", "{AAC088D9-01C0-4B5E-851C-F6D9B9E9044C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebAssemblyApp.Client", "..\BlazorWebAssemblyApp\Client\BlazorWebAssemblyApp.Client.csproj", "{AAC088D9-01C0-4B5E-851C-F6D9B9E9044C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWebAssemblyApp.Shared", "..\BlazorWebAssemblyApp\Shared\BlazorWebAssemblyApp.Shared.csproj", "{FD501A2F-6065-43F9-BDFB-4BAB358992AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebAssemblyApp.Shared", "..\BlazorWebAssemblyApp\Shared\BlazorWebAssemblyApp.Shared.csproj", "{FD501A2F-6065-43F9-BDFB-4BAB358992AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeHub.NetCore5", "..\CodeHub.NetCore5\CodeHub.NetCore5.csproj", "{15D22ED7-FF25-4109-96D0-EA2C5B19F442}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{FD501A2F-6065-43F9-BDFB-4BAB358992AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD501A2F-6065-43F9-BDFB-4BAB358992AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD501A2F-6065-43F9-BDFB-4BAB358992AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15D22ED7-FF25-4109-96D0-EA2C5B19F442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15D22ED7-FF25-4109-96D0-EA2C5B19F442}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15D22ED7-FF25-4109-96D0-EA2C5B19F442}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15D22ED7-FF25-4109-96D0-EA2C5B19F442}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
