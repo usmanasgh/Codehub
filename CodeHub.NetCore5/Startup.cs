@@ -1,3 +1,5 @@
+using CodeHub.NetCore5.Interface;
+using CodeHub.NetCore5.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -29,7 +31,13 @@ namespace CodeHub.NetCore5
 
             //services.AddMvc(); // MUA: Adding this service to run MVC 1.1
 
+            //services.AddMvcCore();
+
             services.AddControllersWithViews();
+            // MUA : Setup service to receive response in xml
+            services.AddMvc().AddXmlSerializerFormatters();
+            // MUA : Register dependency injection
+            services.AddSingleton<IEmployeeRepository, EmployeeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,12 +49,13 @@ namespace CodeHub.NetCore5
             //MUA: 1nd middleware code? - 1.0
             if (env.IsDevelopment() || env.IsEnvironment("MUACustom"))
             {
-                DeveloperExceptionPageOptions developerExceptionPageOptions = new DeveloperExceptionPageOptions
-                {
-                    SourceCodeLineCount = 10 // MUA: Number of lines to display before and after the lines causes the exception
-                };
-                
-                app.UseDeveloperExceptionPage(developerExceptionPageOptions);
+                //DeveloperExceptionPageOptions developerExceptionPageOptions = new DeveloperExceptionPageOptions
+                //{
+                //    SourceCodeLineCount = 10 // MUA: Number of lines to display before and after the lines causes the exception
+                //};
+
+                //app.UseDeveloperExceptionPage(developerExceptionPageOptions);
+                app.UseDeveloperExceptionPage();
             }
             else
             {
@@ -82,8 +91,6 @@ namespace CodeHub.NetCore5
             //app.UseFileServer(); // Will call default.html
 
 
-
-            
             //app.UseHttpsRedirection();
 
             app.UseStaticFiles(); // MUA : Adding new middleware request processing pipeline.

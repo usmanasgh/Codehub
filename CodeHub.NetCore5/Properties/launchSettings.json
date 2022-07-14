@@ -12,7 +12,8 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "MUACustom",
+        //"ASPNETCORE_ENVIRONMENT": "MUACustom",
+        "ASPNETCORE_ENVIRONMENT": "Development",
         "usmanasgh": "usmanasghKeyValue priority1"
       }
     },
