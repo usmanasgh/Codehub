@@ -9,5 +9,6 @@ namespace CodeHub.NetCore5.Interface
     public interface IEmployeeRepository
     {
         Employee GetEmployee(int Id);
+        IEnumerable<Employee> GetAllEmployee();
     }
 }

@@ -18,7 +18,12 @@ namespace CodeHub.NetCore5.Models
                 new Employee {Id = 3, Name = "Emaan", Department ="HR", Email ="Humayunasgh@gmail.com"}
             };
         }
-        
+
+        public IEnumerable<Employee> GetAllEmployee()
+        {
+            return employeeList;
+        }
+
         public Employee GetEmployee(int Id)
         {
             return employeeList.FirstOrDefault(e => e.Id == Id);

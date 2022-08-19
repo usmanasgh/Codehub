@@ -16,7 +16,13 @@ namespace CodeHub.NetCore5.Controllers
             _employeeRepository = employeeRepository;
         }
 
-        public string Index()
+        public ViewResult Index()
+        {
+            var model = _employeeRepository.GetAllEmployee();
+            return View(model);
+        }
+        
+        public string FirstEmployee()
         {
             return _employeeRepository.GetEmployee(1).Name;
         }
@@ -24,6 +30,10 @@ namespace CodeHub.NetCore5.Controllers
         public ViewResult Details()
         {
             Employee model = _employeeRepository.GetEmployee(1);
+            ViewData["PageTitle"] = "Employee Details";
+            ViewData["EmployeeModel"] = model;
+            ViewBag.EmployeeViewBagModel = model;
+
             return View(model);
         }
         public ObjectResult DetailsInXml() // MUA : May be renamed after documentation
