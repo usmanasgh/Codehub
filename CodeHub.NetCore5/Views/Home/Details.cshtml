@@ -1,24 +1,21 @@
 ﻿
 @{
-    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Details";
 }
 
 <h1>Details</h1>
 
 <h3>@ViewData["PageTitle"]</h3>
 
-<body>
+@{
+    var employee = ViewData["EmployeeModel"] as CodeHub.NetCore5.Models.Employee;
+}
 
-    @{
-        var employee = ViewData["EmployeeModel"] as CodeHub.NetCore5.Models.Employee;
-    }
+<div> Name: @employee.Name </div>
+<div> Email: @employee.Email </div>
+<div> Department: @employee.Department </div>
 
-    <div> Name: @employee.Name </div>
-    <div> Email: @employee.Email </div>
-    <div> Department: @employee.Department </div>
-
-    <h4>Let's discover ViewBag</h4>
-    <div>@ViewBag.EmployeeViewBagModel.Name</div>
-    <p>ViewBag doesn't need conversions, it only contains dynamic values</p>
-
-</body>
+<h4>Let's discover ViewBag</h4>
+<div>@ViewBag.EmployeeViewBagModel.Name</div>
+<p>ViewBag doesn't need conversions, it only contains dynamic values</p>
