@@ -16,6 +16,9 @@ namespace CodeHub.NetCore5.Controllers
             _employeeRepository = employeeRepository;
         }
 
+        [Route("")]
+        [Route("Home")]
+        [Route("Home/Index")]
         public ViewResult Index()
         {
             var model = _employeeRepository.GetAllEmployee();
@@ -27,9 +30,10 @@ namespace CodeHub.NetCore5.Controllers
             return _employeeRepository.GetEmployee(1).Name;
         }
 
-        public ViewResult Details()
+        [Route("Home/Details/{id?}")]
+        public ViewResult Details(int? id)
         {
-            Employee model = _employeeRepository.GetEmployee(1);
+            Employee model = _employeeRepository.GetEmployee(id??1);
             ViewData["PageTitle"] = "Employee Details";
             ViewData["EmployeeModel"] = model;
             ViewBag.EmployeeViewBagModel = model;

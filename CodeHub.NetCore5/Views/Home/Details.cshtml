@@ -1,21 +1,42 @@
 ﻿
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Details";
-}
 
-<h1>Details</h1>
-
-<h3>@ViewData["PageTitle"]</h3>
-
-@{
     var employee = ViewData["EmployeeModel"] as CodeHub.NetCore5.Models.Employee;
 }
 
-<div> Name: @employee.Name </div>
-<div> Email: @employee.Email </div>
-<div> Department: @employee.Department </div>
+<h2>@ViewData["PageTitle"]</h2>
 
-<h4>Let's discover ViewBag</h4>
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h1>@employee.Name</h1>
+            </div>
+
+            <div class="card-body text-center">
+                <img class="card-img-top" src="~/images/noimage.png" />
+
+                <h4>Employee ID : @employee.Id</h4>  
+                <h4>Email : @employee.Email</h4>
+                <h4>Department : @employee.Department</h4>
+
+            </div>
+            <div class="card-footer text-center">
+                <a asp-controller="home" asp-action="index" class="btn btn-primary">Back</a>
+                <a href="#" class="btn btn-primary">Edit</a>
+                <a href="#" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<h4>Let's discover ViewBag</h4>
 <div>@ViewBag.EmployeeViewBagModel.Name</div>
-<p>ViewBag doesn't need conversions, it only contains dynamic values</p>
+<p>ViewBag doesn't need conversions, it only contains dynamic values</p>*@
+
+
+@section Scripts{
+    <script src="~/js/codehubcore.js"></script>
+}

@@ -1,26 +1,47 @@
-﻿@model IEnumerable<CodeHub.NetCore5.Models.Employee>
+﻿@model IEnumerable<Employee>
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Index";
 }
 
-<table>
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Department</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var employee in Model)
-        {
+
+<div class="card-deck">
+    @foreach (var employee in Model)
+    {
+        <div class="card m-3">
+            <div class="card-header">
+                <h3>@employee.Name</h3>
+            </div>
+            <img class="card-img-top" height="250" src="~/images/noimage.png" />
+            <div class="card-footer text-center">
+                <a asp-controller="home" asp-action="details" asp-route-id="@employee.Id" class="btn btn-primary">View</a>
+                @*<a href="@Url.Action("details","home", new { id = employee.Id })" class="btn btn-primary">Show</a>
+                <a href="/home/details/@employee.Id" class="btn btn-primary">View</a>*@
+                <a href="#" class="btn btn-primary">Edit</a>
+                <a href="#" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    }
+</div>
+
+@*<table>
+        <thead>
             <tr>
-                <td>@employee.Id</td>
-                <td>@employee.Name</td>
-                <td>@employee.Department</td>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Department</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var employee in Model)
+            {
+                <tr>
+                    <td>@employee.Id</td>
+                    <td>@employee.Name</td>
+                    <td>@employee.Department</td>
+                </tr>
+            }
+        </tbody>
+    </table>*@
+
+
