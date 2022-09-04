@@ -21,13 +21,34 @@
 </head>
 <body>
     <div class="container">
-        @RenderBody()
-    </div>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <a class="navbar-brand" asp-controller="home" asp-action="index">
+                <img src="~/images/Kodehub1.png" width="40" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="home" asp-action="index">List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="home" asp-action="create">Create</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-    @if (IsSectionDefined("Scripts"))
-    {
-        @RenderSection("Scripts", required : true)
-    }
+        <div>
+            @RenderBody()
+        </div>
+
+        @if (IsSectionDefined("Scripts"))
+        {
+            @RenderSection("Scripts", required: false)
+        }
+    </div>
 
 </body>
 </html>
