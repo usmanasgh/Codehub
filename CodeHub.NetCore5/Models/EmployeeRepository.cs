@@ -13,9 +13,9 @@ namespace CodeHub.NetCore5.Models
         {
             employeeList = new List<Employee>()
             {
-                new Employee {Id = 1, Name = "Humayun", Department ="IT", Email ="Humayunasgh@gmail.com"},
-                new Employee {Id = 2, Name = "Sana", Department ="HR", Email ="Sanaasgh@gmail.com"},
-                new Employee {Id = 3, Name = "Emaan", Department ="HR", Email ="Emaanasgh@gmail.com"}
+                new Employee {Id = 1, Name = "Humayun", Department = DepartmentEnum.IT, Email ="Humayunasgh@gmail.com"},
+                new Employee {Id = 2, Name = "Sana", Department = DepartmentEnum.HR, Email ="Sanaasgh@gmail.com"},
+                new Employee {Id = 3, Name = "Emaan", Department = DepartmentEnum.Payroll, Email ="Emaanasgh@gmail.com"}
             };
         }
 

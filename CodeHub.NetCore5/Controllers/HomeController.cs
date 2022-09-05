@@ -24,7 +24,13 @@ namespace CodeHub.NetCore5.Controllers
             var model = _employeeRepository.GetAllEmployee();
             return View(model);
         }
-        
+
+        public ViewResult Create()
+        {
+            //var model = _employeeRepository.GetAllEmployee();
+            return View();
+        }
+
         public string FirstEmployee()
         {
             return _employeeRepository.GetEmployee(1).Name;
