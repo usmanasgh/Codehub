@@ -28,5 +28,14 @@ namespace CodeHub.NetCore5.Models
         {
             return employeeList.FirstOrDefault(e => e.Id == Id);
         }
+
+        public Employee Add(Employee employee)
+        {
+            employee.Id = employeeList.Max(x => x.Id) + 1;
+            
+            employeeList.Add(employee);
+            
+            return employee;
+        }
     }
 }

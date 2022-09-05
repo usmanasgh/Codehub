@@ -25,9 +25,22 @@ namespace CodeHub.NetCore5.Controllers
             return View(model);
         }
 
+        [HttpGet]
         public ViewResult Create()
         {
             //var model = _employeeRepository.GetAllEmployee();
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Employee employee) // MUA : IActionResult can work with both, RedirectToAction and Return View()
+        {
+            if (ModelState.IsValid)
+            {
+                Employee model = _employeeRepository.Add(employee);
+                return RedirectToAction("Details", new { id = model.Id });
+            }
+
             return View();
         }
 
