@@ -37,7 +37,7 @@ namespace CodeHub.NetCore5
             // MUA : Setup service to receive response in xml
             services.AddMvc().AddXmlSerializerFormatters();
             // MUA : Register dependency injection
-            services.AddSingleton<IEmployeeRepository, EmployeeRepository>();
+            services.AddTransient<IEmployeeRepository, MockEmployeeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

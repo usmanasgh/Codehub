@@ -1,4 +1,5 @@
 ﻿@model Employee
+@inject IEmployeeRepository _empRepo
 
 @{
     ViewBag.Title = "Create Employee";
@@ -30,7 +31,7 @@
             <span asp-validation-for="Department" class="text-danger"></span>
         </div>
     </div>
-    
+
     <div asp-validation-summary="All"></div>
 
     <div class="form-group row">
@@ -38,6 +39,13 @@
             <button type="submit" class="btn btn-primary">Create</button>
         </div>
     </div>
+
+    <div class="form-group row">
+        <div class="col-sm-10">
+            Total Employees Count : = @_empRepo.GetAllEmployee().Count()
+        </div>
+    </div>
+
 </form>
 
 @*<form asp-controller="home" asp-action="create" method="post">

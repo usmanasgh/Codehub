@@ -6,10 +6,10 @@ using CodeHub.NetCore5.Interface;
 
 namespace CodeHub.NetCore5.Models
 {
-    public class EmployeeRepository : IEmployeeRepository
+    public class MockEmployeeRepository : IEmployeeRepository
     {
         private List<Employee> employeeList;
-        public EmployeeRepository()
+        public MockEmployeeRepository()
         {
             employeeList = new List<Employee>()
             {
