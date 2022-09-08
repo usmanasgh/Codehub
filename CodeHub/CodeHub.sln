@@ -17,6 +17,22 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebAssemblyApp.Shared
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeHub.NetCore5", "..\CodeHub.NetCore5\CodeHub.NetCore5.csproj", "{15D22ED7-FF25-4109-96D0-EA2C5B19F442}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "All_SQL", "All_SQL", "{5D22B0D8-244B-4581-803B-D9DC98C574FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ChangeSet", "ChangeSet", "{FA225FFE-47F9-40C1-9527-27DAA19621AF}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Desktop\CodeHub\SQL\ChangeSet\iCodeHub_1.0.sql = ..\..\..\..\Desktop\CodeHub\SQL\ChangeSet\iCodeHub_1.0.sql
+		..\..\..\..\Desktop\CodeHub\SQL\ChangeSet\tCodeHub_1.0.sql = ..\..\..\..\Desktop\CodeHub\SQL\ChangeSet\tCodeHub_1.0.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{13368B03-2C7A-44C0-92C1-650867D47D3B}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Desktop\CodeHub\SQL\Schema\iAccessRights.sql = ..\..\..\..\Desktop\CodeHub\SQL\Schema\iAccessRights.sql
+		..\..\..\..\Desktop\CodeHub\SQL\Schema\pCodeHub.sql = ..\..\..\..\Desktop\CodeHub\SQL\Schema\pCodeHub.sql
+		..\..\..\..\Desktop\CodeHub\SQL\Schema\pCodeHubAuto.sql = ..\..\..\..\Desktop\CodeHub\SQL\Schema\pCodeHubAuto.sql
+		..\..\..\..\Desktop\CodeHub\SQL\Schema\tCodeHub.sql = ..\..\..\..\Desktop\CodeHub\SQL\Schema\tCodeHub.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +71,8 @@ Global
 		{EBDA1C47-04FB-4F84-A5A9-76F663A90126} = {2B988605-F4B9-4593-882B-250C2144AE4F}
 		{AAC088D9-01C0-4B5E-851C-F6D9B9E9044C} = {2B988605-F4B9-4593-882B-250C2144AE4F}
 		{FD501A2F-6065-43F9-BDFB-4BAB358992AC} = {2B988605-F4B9-4593-882B-250C2144AE4F}
+		{FA225FFE-47F9-40C1-9527-27DAA19621AF} = {5D22B0D8-244B-4581-803B-D9DC98C574FF}
+		{13368B03-2C7A-44C0-92C1-650867D47D3B} = {5D22B0D8-244B-4581-803B-D9DC98C574FF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C4200A21-6231-4AC8-A5A0-E68E5A67A116}

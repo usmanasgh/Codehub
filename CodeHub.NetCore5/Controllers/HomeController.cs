@@ -10,10 +10,10 @@ namespace CodeHub.NetCore5.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IEmployeeRepository _employeeRepository;
+        private readonly IEmployeeRepository _employeeMockRepository;
         public HomeController(IEmployeeRepository employeeRepository)
         {
-            _employeeRepository = employeeRepository;
+            _employeeMockRepository = employeeRepository;
         }
 
         [Route("")]
@@ -21,7 +21,7 @@ namespace CodeHub.NetCore5.Controllers
         [Route("Home/Index")]
         public ViewResult Index()
         {
-            var model = _employeeRepository.GetAllEmployee();
+            var model = _employeeMockRepository.GetAllEmployee();
             return View(model);
         }
 
@@ -37,7 +37,7 @@ namespace CodeHub.NetCore5.Controllers
         {
             if (ModelState.IsValid)
             {
-                Employee model = _employeeRepository.Add(employee);
+                Employee model = _employeeMockRepository.Add(employee);
                 return RedirectToAction("Details", new { id = model.Id });
             }
 
@@ -46,13 +46,13 @@ namespace CodeHub.NetCore5.Controllers
 
         public string FirstEmployee()
         {
-            return _employeeRepository.GetEmployee(1).Name;
+            return _employeeMockRepository.GetEmployee(1).Name;
         }
 
         [Route("Home/Details/{id?}")]
         public ViewResult Details(int? id)
         {
-            Employee model = _employeeRepository.GetEmployee(id??1);
+            Employee model = _employeeMockRepository.GetEmployee(id??1);
             ViewData["PageTitle"] = "Employee Details";
             ViewData["EmployeeModel"] = model;
             ViewBag.EmployeeViewBagModel = model;
@@ -61,13 +61,13 @@ namespace CodeHub.NetCore5.Controllers
         }
         public ObjectResult DetailsInXml() // MUA : May be renamed after documentation
         {
-            Employee model = _employeeRepository.GetEmployee(1);
+            Employee model = _employeeMockRepository.GetEmployee(1);
             return new ObjectResult(model);
         }
 
         public JsonResult DetailsInJson() // MUA : May be renamed after documentation
         {
-            Employee model = _employeeRepository.GetEmployee(1);
+            Employee model = _employeeMockRepository.GetEmployee(1);
             return Json(model);
         }
         

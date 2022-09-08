@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CodeHub.NetCore5.Interface;
+using CodeHub.NetCore5.Models;
 
-namespace CodeHub.NetCore5.Models
+namespace CodeHub.NetCore5.Repositories
 {
-    public class MockEmployeeRepository : IEmployeeRepository
+    public class EmployeeMockRepository : IEmployeeRepository
     {
         private List<Employee> employeeList;
-        public MockEmployeeRepository()
+        public EmployeeMockRepository()
         {
             employeeList = new List<Employee>()
             {
@@ -35,6 +36,32 @@ namespace CodeHub.NetCore5.Models
             
             employeeList.Add(employee);
             
+            return employee;
+        }
+
+        public Employee Update(Employee employeeChanges)
+        {
+            Employee employee = employeeList.FirstOrDefault(x => x.Id == employeeChanges.Id);
+
+            if (employee != null)
+            {
+                employee.Name = employeeChanges.Name;
+                employee.Email = employeeChanges.Email;
+                employee.Email = employeeChanges.Email;
+            }
+
+            return employee;
+        }
+
+        public Employee Delete(int Id)
+        {
+            Employee employee = employeeList.FirstOrDefault(x => x.Id == Id);
+            
+            if(employee != null)
+            {
+                employeeList.Remove(employee);
+            }
+
             return employee;
         }
     }

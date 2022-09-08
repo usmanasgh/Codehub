@@ -1,28 +1,24 @@
+using CodeHub.NetCore5.DAL;
 using CodeHub.NetCore5.Interface;
 using CodeHub.NetCore5.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using CodeHub.NetCore5.Repositories;
 
 namespace CodeHub.NetCore5
 {
     public class Startup
     {
+        public IConfiguration configuration { get; }
         public Startup(IConfiguration configuration)
         {
             this.configuration = configuration;
             var MUATEST = this.configuration["usmanasgh"];
         }
-
-        public IConfiguration configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -33,11 +29,13 @@ namespace CodeHub.NetCore5
 
             //services.AddMvcCore();
 
+            services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DBConnection")));
+
             services.AddControllersWithViews();
             // MUA : Setup service to receive response in xml
             services.AddMvc().AddXmlSerializerFormatters();
             // MUA : Register dependency injection
-            services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
+            services.AddSingleton<IEmployeeRepository, EmployeeMockRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
