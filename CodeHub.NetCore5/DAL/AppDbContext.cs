@@ -15,6 +15,19 @@ namespace CodeHub.NetCore5.DAL
 
         }
 
-        public DbSet<Employee> employees;
+        public DbSet<Employee> Employees { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Employee>().HasData(new Employee
+            {
+                Id = 1,
+                Name = "Usman Asghar",
+                Email = "usmanasgh@gmail.com",
+                Department = DepartmentEnum.IT
+            });
+        }
     }
 }

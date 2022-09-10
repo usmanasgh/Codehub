@@ -30,12 +30,16 @@ namespace CodeHub.NetCore5
             //services.AddMvcCore();
 
             services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DBConnection")));
+            // MUA : Register dependency injection
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            //services.AddSingleton<IEmployeeRepository, EmployeeMockRepository>();
+            //services.AddSingleton<IEmployeeRepository, EmployeeRepository>();
+
 
             services.AddControllersWithViews();
             // MUA : Setup service to receive response in xml
             services.AddMvc().AddXmlSerializerFormatters();
-            // MUA : Register dependency injection
-            services.AddSingleton<IEmployeeRepository, EmployeeMockRepository>();
+        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
