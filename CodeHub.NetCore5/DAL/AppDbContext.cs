@@ -19,15 +19,7 @@ namespace CodeHub.NetCore5.DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<Employee>().HasData(new Employee
-            {
-                Id = 1,
-                Name = "Usman Asghar",
-                Email = "usmanasgh@gmail.com",
-                Department = DepartmentEnum.IT
-            });
+            modelBuilder.SeedEmployees();
         }
     }
 }

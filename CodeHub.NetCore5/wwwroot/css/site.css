@@ -73,3 +73,7 @@ body {
 .btn {
     width: 75px;
 }
+.ImageThumbnail{
+    height : 200px;
+    width : auto;
+}

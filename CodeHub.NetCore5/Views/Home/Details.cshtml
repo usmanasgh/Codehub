@@ -1,8 +1,9 @@
-﻿
+﻿@model HomeDetailsViewModel
 @{
-    ViewBag.Title = "Details";
+    
+    //var employee = ViewData["EmployeeModel"] as CodeHub.NetCore5.Models.Employee;
 
-    var employee = ViewData["EmployeeModel"] as CodeHub.NetCore5.Models.Employee;
+    var PhotoPath = "~/Images/" + (Model.Employee.PhotoPath ?? "noimage.png");
 }
 
 <h2>@ViewData["PageTitle"]</h2>
@@ -11,15 +12,15 @@
     <div class="col-sm-8">
         <div class="card">
             <div class="card-header">
-                <h1>@employee.Name</h1>
+                <h1>@Model.Employee.Name</h1>
             </div>
 
             <div class="card-body text-center">
-                <img class="card-img-top" src="~/images/noimage.png" />
+                <img class="card-img-top" src="@PhotoPath" asp-append-version="true"  />
 
-                <h4>Employee ID : @employee.Id</h4>  
-                <h4>Email : @employee.Email</h4>
-                <h4>Department : @employee.Department</h4>
+                <h4>Employee ID : @Model.Employee.Id</h4>
+                <h4>Email : @Model.Employee.Email</h4>
+                <h4>Department : @Model.Employee.Department</h4>
 
             </div>
             <div class="card-footer text-center">
@@ -33,8 +34,8 @@
 
 
 @*<h4>Let's discover ViewBag</h4>
-<div>@ViewBag.EmployeeViewBagModel.Name</div>
-<p>ViewBag doesn't need conversions, it only contains dynamic values</p>*@
+    <div>@ViewBag.EmployeeViewBagModel.Name</div>
+    <p>ViewBag doesn't need conversions, it only contains dynamic values</p>*@
 
 
 @section Scripts{
