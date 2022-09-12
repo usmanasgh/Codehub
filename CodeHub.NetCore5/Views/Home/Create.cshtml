@@ -37,6 +37,7 @@
         <div class="col-sm-10">
             <div class="custom-file">
                 <input asp-for="Photo" class="form-control custom-file-input">
+                @*<input asp-for="Photos" multiple class="form-control custom-file-input">*@
                 <label class="custom-file-label">Choose File...</label>
             </div>
         </div>
@@ -68,6 +69,27 @@
             });
         </script>
     }
+
+    @*This script is required to display the selected file in the file upload element
+        If a sinle file is selected, the name of the file is displayed. If multiple
+        files are selected, then the count of files is displayed.*@
+
+    @*@section Scripts {
+        <script>
+            $(document).ready(function () {
+                $('.custom-file-input').on("change", function () {
+                    var fileLabel = $(this).next('.custom-file-label');
+                    var files = $(this)[0].files;
+                    if (files.length > 1) {
+                        fileLabel.html(files.length + ' files selected');
+                    }
+                    else if (files.length == 1) {
+                        fileLabel.html(files[0].name);
+                    }
+                });
+            });
+        </script>
+    }*@
 
 </form>
 

@@ -78,6 +78,26 @@ namespace CodeHub.NetCore5.Controllers
                     model.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
                 }
 
+                //// MUA : For multiple files
+                //if (model.Photos != null && model.Photos.Count > 0)
+                //{
+                //    // Loop thru each selected file
+                //    foreach (IFormFile photo in model.Photos)
+                //    {
+                //        // The file must be uploaded to the images folder in wwwroot
+                //        // To get the path of the wwwroot folder we are using the injected
+                //        // IHostingEnvironment service provided by ASP.NET Core
+                //        string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
+                //        // To make sure the file name is unique we are appending a new
+                //        // GUID value and and an underscore to the file name
+                //        uniqueFileName = Guid.NewGuid().ToString() + "_" + photo.FileName;
+                //        string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                //        // Use CopyTo() method provided by IFormFile interface to
+                //        // copy the file to wwwroot/images folder
+                //        photo.CopyTo(new FileStream(filePath, FileMode.Create));
+                //    }
+                //}
+
                 Employee newEmployee = new Employee
                 {
                     Name = model.Name,
