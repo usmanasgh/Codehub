@@ -22,7 +22,7 @@
                 @*<a href="@Url.Action("details","home", new { id = employee.Id })" class="btn btn-primary">Show</a>
                 <a href="/home/details/@employee.Id" class="btn btn-primary">View</a>*@
 
-                <a href="#" class="btn btn-primary">Edit</a>
+                <a class="btn btn-primary" asp-action="edit" asp-controller="home" asp-route-id="@employee.Id">Edit</a>
                 <a href="#" class="btn btn-danger">Delete</a>
             </div>
         </div>
