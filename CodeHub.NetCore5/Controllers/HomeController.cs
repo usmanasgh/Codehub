@@ -166,15 +166,25 @@ namespace CodeHub.NetCore5.Controllers
         }
 
         [Route("Home/Details/{id?}")]
-        public ViewResult Details(int? id)
+        public ViewResult Details(int id)
         {
+
+            Employee employee = _employeeRepository.GetEmployee(id);
+
+            if (employee == null)
+            {
+                Response.StatusCode = 404;
+                return View("EmployeeNotFound", id);
+            }
+
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
-                Employee = _employeeRepository.GetEmployee(id ?? 1)
+                Employee = employee,
+                Title = "Employee Details"
             };
 
             //Employee model = _employeeRepository.GetEmployee(id??1);
-            ViewData["PageTitle"] = "Employee Details";
+            //ViewData["PageTitle"] = "Employee Details"
             //ViewData["EmployeeModel"] = model;
             //ViewBag.EmployeeViewBagModel = model;
 

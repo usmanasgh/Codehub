@@ -61,8 +61,12 @@ namespace CodeHub.NetCore5
             }
             else
             {
-                app.UseExceptionHandler("/Error");
+                //app.UseExceptionHandler("/Error");
+                //app.UseStatusCodePages();
+
+                app.UseStatusCodePagesWithRedirects("/Error/{0}");
             }
+        
 
             //MUA: 2nd middleware code? - 1.1
             //app.Use(async (context, next) =>
