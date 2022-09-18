@@ -168,6 +168,7 @@ namespace CodeHub.NetCore5.Controllers
         [Route("Home/Details/{id?}")]
         public ViewResult Details(int id)
         {
+            throw new Exception("ABC");
 
             Employee employee = _employeeRepository.GetEmployee(id);
 

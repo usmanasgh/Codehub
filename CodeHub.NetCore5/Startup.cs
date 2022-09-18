@@ -61,10 +61,12 @@ namespace CodeHub.NetCore5
             }
             else
             {
-                //app.UseExceptionHandler("/Error");
                 //app.UseStatusCodePages();
 
-                app.UseStatusCodePagesWithRedirects("/Error/{0}");
+                //app.UseStatusCodePagesWithRedirects("/Error/{0}");
+                
+                app.UseExceptionHandler("/Error");
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
             }
         
 
