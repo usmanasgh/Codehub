@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using CodeHub.NetCore5.Repositories;
+using Microsoft.AspNetCore.Identity;
 
 namespace CodeHub.NetCore5
 {
@@ -30,6 +31,17 @@ namespace CodeHub.NetCore5
             //services.AddMvcCore();
 
             services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DBConnection")));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>();
+
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.Password.RequiredLength = 10;
+                options.Password.RequiredUniqueChars = 3;
+                options.Password.RequireNonAlphanumeric = false;
+            }).AddEntityFrameworkStores<AppDbContext>();
+
             // MUA : Register dependency injection
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             //services.AddSingleton<IEmployeeRepository, EmployeeMockRepository>();
@@ -113,6 +125,8 @@ namespace CodeHub.NetCore5
             //    await context.Response.WriteAsync("Hosting environment : " + env.EnvironmentName);
 
             //});
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

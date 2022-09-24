@@ -8,6 +8,7 @@ using CodeHub.NetCore5.Models;
 using CodeHub.NetCore5.ViewModels;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace CodeHub.NetCore5.Controllers
 {
@@ -16,13 +17,15 @@ namespace CodeHub.NetCore5.Controllers
         private readonly IEmployeeRepository _employeeRepository;
         [Obsolete]
         private readonly IHostingEnvironment hostingEnvironment;
+        private readonly ILogger logger; 
 
         [Obsolete]
         public HomeController(IEmployeeRepository employeeRepository,
-                              IHostingEnvironment hostingEnvironment)
+                              IHostingEnvironment hostingEnvironment, ILogger<HomeController> logger)
         {
             _employeeRepository = employeeRepository;
             this.hostingEnvironment = hostingEnvironment;
+            this.logger = logger;
         }
 
         [Route("")]
@@ -168,7 +171,14 @@ namespace CodeHub.NetCore5.Controllers
         [Route("Home/Details/{id?}")]
         public ViewResult Details(int id)
         {
-            throw new Exception("ABC");
+            //throw new Exception("ABC");
+
+            logger.LogTrace("Trace Log");
+            logger.LogDebug("Debug Log");
+            logger.LogInformation("Information Log");
+            logger.LogWarning("Warning Log");
+            logger.LogError("Error Log");
+            logger.LogCritical("Critical Log");
 
             Employee employee = _employeeRepository.GetEmployee(id);
 
