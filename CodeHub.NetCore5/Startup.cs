@@ -32,8 +32,8 @@ namespace CodeHub.NetCore5
 
             services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DBConnection")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<AppDbContext>();
+            //services.AddIdentity<IdentityUser, IdentityRole>()
+            //    .AddEntityFrameworkStores<AppDbContext>(); // 
 
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
@@ -117,7 +117,7 @@ namespace CodeHub.NetCore5
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthentication();
 
             //app.Run(async (context) =>
             //{
