@@ -9,6 +9,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using CodeHub.NetCore5.Repositories;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace CodeHub.NetCore5
 {
@@ -49,9 +51,19 @@ namespace CodeHub.NetCore5
 
 
             services.AddControllersWithViews();
+
             // MUA : Setup service to receive response in xml
-            services.AddMvc().AddXmlSerializerFormatters();
-        
+            //services.AddMvc().AddXmlSerializerFormatters();
+
+            // MUA : Adding authorize filter for entire application
+            services.AddMvc(options =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                                  .RequireAuthenticatedUser()
+                                  .Build();
+                options.Filters.Add(new AuthorizeFilter(policy));
+            }).AddXmlSerializerFormatters();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -119,14 +131,14 @@ namespace CodeHub.NetCore5
 
             app.UseAuthentication();
 
+            app.UseAuthorization();
+            
             //app.Run(async (context) =>
             //{
             //    //throw new Exception("Custom exception");
             //    await context.Response.WriteAsync("Hosting environment : " + env.EnvironmentName);
 
             //});
-
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

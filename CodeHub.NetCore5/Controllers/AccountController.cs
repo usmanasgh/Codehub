@@ -1,4 +1,5 @@
 ﻿using CodeHub.NetCore5.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -26,12 +27,14 @@ namespace CodeHub.NetCore5.Controllers
         //}
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
@@ -74,13 +77,15 @@ namespace CodeHub.NetCore5.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        [AllowAnonymous]
+        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +94,14 @@ namespace CodeHub.NetCore5.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("index", "home");
+                    if (!string.IsNullOrEmpty(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToAction("index", "home");
+                    }
                 }
 
                 ModelState.AddModelError(string.Empty, "Invalid Login Attempt");

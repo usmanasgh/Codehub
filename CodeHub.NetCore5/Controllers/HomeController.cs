@@ -9,9 +9,11 @@ using CodeHub.NetCore5.ViewModels;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CodeHub.NetCore5.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly IEmployeeRepository _employeeRepository;
@@ -31,6 +33,7 @@ namespace CodeHub.NetCore5.Controllers
         [Route("")]
         [Route("Home")]
         [Route("Home/Index")]
+        [AllowAnonymous]
         public ViewResult Index()
         {
             var model = _employeeRepository.GetAllEmployee();
@@ -38,6 +41,7 @@ namespace CodeHub.NetCore5.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ViewResult Create()
         {
             //var model = _employeeRepository.GetAllEmployee();
@@ -58,6 +62,7 @@ namespace CodeHub.NetCore5.Controllers
 
         [HttpPost]
         [Obsolete]
+        [Authorize]
         public IActionResult Create(EmployeeCreateViewModel model)
         {
             if (ModelState.IsValid)
@@ -102,6 +107,7 @@ namespace CodeHub.NetCore5.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ViewResult Edit(int id)
         {
             Employee employee = _employeeRepository.GetEmployee(id);
@@ -120,6 +126,7 @@ namespace CodeHub.NetCore5.Controllers
 
         [HttpPost]
         [Obsolete]
+        [Authorize]
         public IActionResult Edit(EmployeeEditViewModel model)
         {
             // Check if the provided data is valid, if not rerender the edit view
