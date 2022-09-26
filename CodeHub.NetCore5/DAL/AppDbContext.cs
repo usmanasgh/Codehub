@@ -8,7 +8,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CodeHub.NetCore5.DAL
 {
-    public class AppDbContext : IdentityDbContext
+    //public class AppDbContext : IdentityDbContext // MUA: Because we have modified identity class by extending custom class
+    public class AppDbContext : IdentityDbContext<CustomIdentityUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)

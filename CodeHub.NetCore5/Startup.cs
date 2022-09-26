@@ -37,7 +37,9 @@ namespace CodeHub.NetCore5
             //services.AddIdentity<IdentityUser, IdentityRole>()
             //    .AddEntityFrameworkStores<AppDbContext>(); // 
 
-            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+
+            //services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            services.AddIdentity<CustomIdentityUser, IdentityRole>(options =>
             {
                 options.Password.RequiredLength = 10;
                 options.Password.RequiredUniqueChars = 3;
