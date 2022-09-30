@@ -40,7 +40,6 @@ namespace CodeHub.NetCore5.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Copy data from RegisterViewModel to IdentityUser
                 var user = new CustomIdentityUser
                 {
                     UserName = model.Email,
@@ -48,13 +47,18 @@ namespace CodeHub.NetCore5.Controllers
                     City = model.City
                 };
 
-                // Store user data in AspNetUsers database table
                 var result = await userManager.CreateAsync(user, model.Password);
 
-                // If user is successfully created, sign-in the user using
-                // SignInManager and redirect to index action of HomeController
                 if (result.Succeeded)
                 {
+                    // If the user is signed in and in the Admin role, then it is
+                    // the Admin user that is creating a new user. So redirect the
+                    // Admin user to ListRoles action
+                    if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    {
+                        return RedirectToAction("ListUsers", "Administration");
+                    }
+
                     await signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("index", "home");
                 }
@@ -112,7 +116,16 @@ namespace CodeHub.NetCore5.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
+
         #region "AJAX"
+
         [AcceptVerbs("Get", "Post")]
         [AllowAnonymous]
         public async Task<IActionResult> IsEmailInUse(string email)
