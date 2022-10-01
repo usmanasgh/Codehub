@@ -24,6 +24,12 @@ namespace CodeHub.NetCore5.DAL
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.SeedEmployees();
+
+            // MUA: Below code is to change cascading refrential integrity to => No Action
+            foreach (var foreignKey in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
+            }
         }
     }
 }
