@@ -66,6 +66,23 @@ namespace CodeHub.NetCore5
                 options.Filters.Add(new AuthorizeFilter(policy));
             }).AddXmlSerializerFormatters();
 
+            // MUA: For Claims
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("DeleteRolePolicy",
+                policy => policy.RequireClaim("Delete Role")
+                // .RequireClaim("Create Role")
+                );
+
+                options.AddPolicy("EditRolePolicy",
+                policy => policy.RequireClaim("Edit Role")
+                );
+
+                options.AddPolicy("AdminRolePolicy",
+                policy => policy.RequireRole("Admin")
+                );
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -90,11 +107,11 @@ namespace CodeHub.NetCore5
                 //app.UseStatusCodePages();
 
                 //app.UseStatusCodePagesWithRedirects("/Error/{0}");
-                
+
                 app.UseExceptionHandler("/Error");
                 app.UseStatusCodePagesWithReExecute("/Error/{0}");
             }
-        
+
 
             //MUA: 2nd middleware code? - 1.1
             //app.Use(async (context, next) =>
@@ -134,7 +151,7 @@ namespace CodeHub.NetCore5
             app.UseAuthentication();
 
             app.UseAuthorization();
-            
+
             //app.Run(async (context) =>
             //{
             //    //throw new Exception("Custom exception");
