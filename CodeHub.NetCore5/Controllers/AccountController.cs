@@ -116,14 +116,6 @@ namespace CodeHub.NetCore5.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        [AllowAnonymous]
-        public IActionResult AccessDenied()
-        {
-            return View();
-        }
-
-
         #region "AJAX"
 
         [AcceptVerbs("Get", "Post")]

@@ -11,6 +11,7 @@ using CodeHub.NetCore5.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace CodeHub.NetCore5
 {
@@ -66,22 +67,33 @@ namespace CodeHub.NetCore5
                 options.Filters.Add(new AuthorizeFilter(policy));
             }).AddXmlSerializerFormatters();
 
+            // MUA: For Default AccessDeniedPath
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.AccessDeniedPath = new PathString("/Administration/AccessDenied");
+            });
+
             // MUA: For Claims
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("DeleteRolePolicy",
-                policy => policy.RequireClaim("Delete Role")
+                options.AddPolicy("DeleteRolePolicy", policy => policy.RequireClaim("Delete Role")
                 // .RequireClaim("Create Role")
                 );
 
-                options.AddPolicy("EditRolePolicy",
-                policy => policy.RequireClaim("Edit Role")
-                );
+                //options.AddPolicy("EditRolePolicy",
+                //policy => policy.RequireClaim("Edit Role", "true") // MUA: Claim Type is case insensitive & claim value is case sensitive
+                //);
 
-                options.AddPolicy("AdminRolePolicy",
-                policy => policy.RequireRole("Admin")
-                );
+                //MUA : Custom Policy [incorporates 'A & B' OR 'C' case]
+                //options.AddPolicy("EditRolePolicy", policy => policy.RequireAssertion(context => AuthorizeAccess(context)));
 
+                //MUA : Custom Policy [incorporates 'A & B' OR 'C' case] - Almost replica of above code-block
+                options.AddPolicy("EditRolePolicy", policy => policy.RequireAssertion(context => context.User.IsInRole("Admin") &&
+                    context.User.HasClaim(claim => claim.Type == "Edit Role" && claim.Value == "true") || context.User.IsInRole("Super Admin")));
+
+                options.AddPolicy("AdminRolePolicy", policy => policy.RequireRole("Admin"));
+
+                options.AddPolicy("AllowedCountryPolicy", policy => policy.RequireClaim("Country", "USA", "Pakistan", "UK"));
             });
         }
 
@@ -166,5 +178,16 @@ namespace CodeHub.NetCore5
                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+
+        #region"Custom Functions"
+
+        private bool AuthorizeAccess(AuthorizationHandlerContext context)
+        {
+            return context.User.IsInRole("Admin") &&
+                    context.User.HasClaim(claim => claim.Type == "Edit Role" && claim.Value == "true") ||
+                    context.User.IsInRole("Super Admin");
+        }
+
+        #endregion
     }
 }
