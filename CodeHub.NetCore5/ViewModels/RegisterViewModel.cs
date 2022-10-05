@@ -13,8 +13,8 @@ namespace CodeHub.NetCore5.ViewModels
         [Required]
         [EmailAddress]
         [Remote(action: "IsEmailInUse", controller: "Account")]
-        [ValidEmailDomain(allowedDomain: "usmanasgh.com",
-        ErrorMessage = "Email domain must be usmanasgh.com")]
+        [ValidEmailDomain(allowedDomain: "codehub.com",
+        ErrorMessage = "Email domain must be codehub.com")]
         public string Email { get; set; }
 
 

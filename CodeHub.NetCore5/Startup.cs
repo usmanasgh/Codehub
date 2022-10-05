@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Http;
+using CodeHub.NetCore5.Security;
 
 namespace CodeHub.NetCore5
 {
@@ -47,14 +48,7 @@ namespace CodeHub.NetCore5
                 options.Password.RequireNonAlphanumeric = false;
             }).AddEntityFrameworkStores<AppDbContext>();
 
-            // MUA : Register dependency injection
-            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-            //services.AddSingleton<IEmployeeRepository, EmployeeMockRepository>();
-            //services.AddSingleton<IEmployeeRepository, EmployeeRepository>();
-
-
-            services.AddControllersWithViews();
-
+            
             // MUA : Setup service to receive response in xml
             //services.AddMvc().AddXmlSerializerFormatters();
 
@@ -66,6 +60,13 @@ namespace CodeHub.NetCore5
                                   .Build();
                 options.Filters.Add(new AuthorizeFilter(policy));
             }).AddXmlSerializerFormatters();
+
+            //services.AddAuthentication().AddGoogle(options =>
+            //{
+            //    options.ClientId = "XXXXX";
+            //    options.ClientSecret = "YYYYY";
+            //});
+
 
             // MUA: For Default AccessDeniedPath
             services.ConfigureApplicationCookie(options =>
@@ -88,13 +89,23 @@ namespace CodeHub.NetCore5
                 //options.AddPolicy("EditRolePolicy", policy => policy.RequireAssertion(context => AuthorizeAccess(context)));
 
                 //MUA : Custom Policy [incorporates 'A & B' OR 'C' case] - Almost replica of above code-block
-                options.AddPolicy("EditRolePolicy", policy => policy.RequireAssertion(context => context.User.IsInRole("Admin") &&
-                    context.User.HasClaim(claim => claim.Type == "Edit Role" && claim.Value == "true") || context.User.IsInRole("Super Admin")));
+                //options.AddPolicy("EditRolePolicy", policy => policy.RequireAssertion(context => context.User.IsInRole("Admin") &&
+                //    context.User.HasClaim(claim => claim.Type == "Edit Role" && claim.Value == "true") || context.User.IsInRole("Super Admin")));
+
+                options.AddPolicy("EditRolePolicy", policy => policy.AddRequirements(new ManageAdminRolesAndClaimsRequirement()));
 
                 options.AddPolicy("AdminRolePolicy", policy => policy.RequireRole("Admin"));
 
                 options.AddPolicy("AllowedCountryPolicy", policy => policy.RequireClaim("Country", "USA", "Pakistan", "UK"));
             });
+
+            // MUA : Register dependency injection
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            //services.AddSingleton<IEmployeeRepository, EmployeeMockRepository>();
+            //services.AddSingleton<IEmployeeRepository, EmployeeRepository>();
+            services.AddSingleton<IAuthorizationHandler, CanEditOnlyOtherAdminRolesAndClaimsHandler>(); // MUA : it is to achieve custom authorization requirements
+            services.AddSingleton<IAuthorizationHandler, SuperAdminHandler>();
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

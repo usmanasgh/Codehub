@@ -1,10 +1,10 @@
-﻿{
+{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:27552",
-      "sslPort": 0
+      "applicationUrl": "https://localhost:44332/",
+      "sslPort": 44332
     }
   },
   "profiles": {
@@ -12,20 +12,18 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        //"ASPNETCORE_ENVIRONMENT": "MUACustom",
-        //"ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_ENVIRONMENT": "Production",
-        "usmanasgh": "usmanasghKeyValue priority1"
+        "usmanasgh": "usmanasghKeyValue priority1",
+        "ASPNETCORE_ENVIRONMENT": "Production"
       }
     },
     "CodeHub.NetCore5": {
       "commandName": "Project",
-      "dotnetRunMessages": "true",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "dotnetRunMessages": "true",
+      "applicationUrl": "http://localhost:5000"
     }
   }
 }
