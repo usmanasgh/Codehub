@@ -61,11 +61,11 @@ namespace CodeHub.NetCore5
                 options.Filters.Add(new AuthorizeFilter(policy));
             }).AddXmlSerializerFormatters();
 
-            //services.AddAuthentication().AddGoogle(options =>
-            //{
-            //    options.ClientId = "XXXXX";
-            //    options.ClientSecret = "YYYYY";
-            //});
+            services.AddAuthentication().AddGoogle(options =>
+            {
+                options.ClientId = "781728812002-ea96a991dscft7k8321l0cgud3181i5m.apps.googleusercontent.com";
+                options.ClientSecret = "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";
+            });
 
 
             // MUA: For Default AccessDeniedPath
