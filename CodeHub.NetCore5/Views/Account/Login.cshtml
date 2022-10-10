@@ -6,7 +6,6 @@
 
 <div class="row">
     <div class="col-md-6">
-        <hr />
         <h3>Local Account Login</h3>
         <hr />
         <form method="post">
@@ -32,8 +31,8 @@
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
     </div>
+
     <div class="col-md-6">
-        <hr />
         <h3>External Login</h3>
         <hr />
         @{
@@ -47,9 +46,9 @@
                     <div>
                         @foreach (var provider in Model.ExternalLogins)
                         {
-                            <button type="submit" class="btn btn-primary"
+                            <button style="width:auto;" type="submit" class="btn btn-primary"
                                     name="provider" value="@provider.Name"
-                                    title="Log in using your @provider.DisplayName account">
+                                    title="Login usin your @provider.DisplayName account">
                                 @provider.DisplayName
                             </button>
                         }
