@@ -13,7 +13,7 @@
       "launchBrowser": true,
       "environmentVariables": {
         "usmanasgh": "usmanasghKeyValue priority1",
-        "ASPNETCORE_ENVIRONMENT": "Production"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "CodeHub.NetCore5": {

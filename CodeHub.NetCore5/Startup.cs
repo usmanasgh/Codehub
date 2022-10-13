@@ -46,7 +46,9 @@ namespace CodeHub.NetCore5
                 options.Password.RequiredLength = 10;
                 options.Password.RequiredUniqueChars = 3;
                 options.Password.RequireNonAlphanumeric = false;
-            }).AddEntityFrameworkStores<AppDbContext>();
+                options.SignIn.RequireConfirmedEmail = true; // MUA: Email confirmation after login creation is required.
+
+            }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders(); 
 
             
             // MUA : Setup service to receive response in xml
