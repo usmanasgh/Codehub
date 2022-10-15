@@ -51,6 +51,9 @@ namespace CodeHub.NetCore5
 
                 options.Tokens.EmailConfirmationTokenProvider = "CustomEmailConfirmation"; // MUA : Custom email confirmation for password reset
 
+                options.Lockout.MaxFailedAccessAttempts = 5; // MUA : Account lockout attemtps
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);  // MUA : Account lockout attemtps
+
             }).AddEntityFrameworkStores<AppDbContext>()
             .AddDefaultTokenProviders()
             .AddTokenProvider<CustomEmailConfirmationTokenProvider

@@ -110,6 +110,47 @@ namespace CodeHub.NetCore5.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> AddPassword()
+        {
+            var user = await userManager.GetUserAsync(User);
+
+            var userHasPassword = await userManager.HasPasswordAsync(user);
+
+            if (userHasPassword)
+            {
+                return RedirectToAction("ChangePassword");
+            }
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddPassword(AddPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await userManager.GetUserAsync(User);
+
+                var result = await userManager.AddPasswordAsync(user, model.NewPassword);
+
+                if (!result.Succeeded)
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                    return View();
+                }
+
+                await signInManager.RefreshSignInAsync(user);
+
+                return View("AddPasswordConfirmation");
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
         [AllowAnonymous]
         public IActionResult ForgotPassword()
         {
@@ -177,6 +218,14 @@ namespace CodeHub.NetCore5.Controllers
                     var result = await userManager.ResetPasswordAsync(user, model.Token, model.Password);
                     if (result.Succeeded)
                     {
+                        // Upon successful password reset and if the account is lockedout, set
+                        // the account lockout end date to current UTC date time, so the user
+                        // can login with the new password
+                        if (await userManager.IsLockedOutAsync(user))
+                        {
+                            await userManager.SetLockoutEndDateAsync(user, DateTimeOffset.UtcNow);
+                        }
+
                         return View("ResetPasswordConfirmation");
                     }
                     // Display validation errors. For example, password reset token already
@@ -197,8 +246,17 @@ namespace CodeHub.NetCore5.Controllers
         }
 
         [HttpGet]
-        public IActionResult ChangePassword()
+        public async Task<IActionResult> ChangePassword()
         {
+            var user = await userManager.GetUserAsync(User);
+
+            var userHasPassword = await userManager.HasPasswordAsync(user);
+
+            if (!userHasPassword)
+            {
+                return RedirectToAction("AddPassword");
+            }
+
             return View();
         }
 
@@ -261,7 +319,7 @@ namespace CodeHub.NetCore5.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            model.ExternalLogins =  (await signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            model.ExternalLogins = (await signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
             if (ModelState.IsValid)
             {
@@ -274,7 +332,7 @@ namespace CodeHub.NetCore5.Controllers
                 }
 
                 var result = await signInManager.PasswordSignInAsync(model.Email,
-                                        model.Password, model.RememberMe, false);
+                                        model.Password, model.RememberMe, true);
 
                 if (result.Succeeded)
                 {
@@ -286,6 +344,12 @@ namespace CodeHub.NetCore5.Controllers
                     {
                         return RedirectToAction("index", "home");
                     }
+                }
+
+                // If account is lockedout send the use to AccountLocked view
+                if (result.IsLockedOut)
+                {
+                    return View("AccountLocked");
                 }
 
                 ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
@@ -419,7 +483,7 @@ namespace CodeHub.NetCore5.Controllers
                 return Json($"Email {email} is already in use.");
             }
         }
-        
+
         #endregion
 
     }
