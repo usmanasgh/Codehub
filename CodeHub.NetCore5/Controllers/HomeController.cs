@@ -10,6 +10,8 @@ using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.DataProtection;
+using CodeHub.NetCore5.Security;
 
 namespace CodeHub.NetCore5.Controllers
 {
@@ -19,15 +21,19 @@ namespace CodeHub.NetCore5.Controllers
         private readonly IEmployeeRepository _employeeRepository;
         [Obsolete]
         private readonly IHostingEnvironment hostingEnvironment;
-        private readonly ILogger logger; 
+        private readonly ILogger logger;
+        private readonly IDataProtector protector;
 
         [Obsolete]
         public HomeController(IEmployeeRepository employeeRepository,
-                              IHostingEnvironment hostingEnvironment, ILogger<HomeController> logger)
+                              IHostingEnvironment hostingEnvironment,
+                              ILogger<HomeController> logger,
+                              IDataProtectionProvider dataProtectionProvider, DataProtectionPurposeStrings dataProtectionPurposeStrings)
         {
             _employeeRepository = employeeRepository;
             this.hostingEnvironment = hostingEnvironment;
             this.logger = logger;
+            protector = dataProtectionProvider.CreateProtector(dataProtectionPurposeStrings.EmployeeIdRouteValue);
         }
 
         [Route("")]
@@ -36,7 +42,16 @@ namespace CodeHub.NetCore5.Controllers
         [AllowAnonymous]
         public ViewResult Index()
         {
-            var model = _employeeRepository.GetAllEmployee();
+            //var model = _employeeRepository.GetAllEmployee();
+
+            //MUA : Implement query string encryption method of employee ids
+            var model = _employeeRepository.GetAllEmployee()
+                                            .Select(e =>
+                                            {
+                                                e.EncryptedId = protector.Protect(e.Id.ToString());
+                                                return e;
+                                            });
+
             return View(model);
         }
 
@@ -176,7 +191,9 @@ namespace CodeHub.NetCore5.Controllers
         }
 
         [Route("Home/Details/{id?}")]
-        public ViewResult Details(int id)
+        
+        //public ViewResult Details(int id)
+        public ViewResult Details(string id)
         {
             //throw new Exception("ABC");
 
@@ -187,12 +204,14 @@ namespace CodeHub.NetCore5.Controllers
             logger.LogError("Error Log");
             logger.LogCritical("Critical Log");
 
-            Employee employee = _employeeRepository.GetEmployee(id);
+            int empId = Convert.ToInt32(protector.Unprotect(id));
+
+            Employee employee = _employeeRepository.GetEmployee(empId);
 
             if (employee == null)
             {
                 Response.StatusCode = 404;
-                return View("EmployeeNotFound", id);
+                return View("EmployeeNotFound", empId);
             }
 
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()

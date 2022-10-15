@@ -33,6 +33,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{13368B
 		..\..\..\..\Desktop\CodeHub\SQL\Schema\tCodeHub.sql = ..\..\..\..\Desktop\CodeHub\SQL\Schema\tCodeHub.sql
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Angular", "Angular", "{D4E66882-9D69-4D6D-AB9B-76AE0494A8BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "React", "React", "{BFA95773-83DC-4258-ABC3-35E0B49E6EEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

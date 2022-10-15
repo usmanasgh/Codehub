@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Http;
 using CodeHub.NetCore5.Security;
+using System;
 
 namespace CodeHub.NetCore5
 {
@@ -48,9 +49,19 @@ namespace CodeHub.NetCore5
                 options.Password.RequireNonAlphanumeric = false;
                 options.SignIn.RequireConfirmedEmail = true; // MUA: Email confirmation after login creation is required.
 
-            }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders(); 
+                options.Tokens.EmailConfirmationTokenProvider = "CustomEmailConfirmation"; // MUA : Custom email confirmation for password reset
 
-            
+            }).AddEntityFrameworkStores<AppDbContext>()
+            .AddDefaultTokenProviders()
+            .AddTokenProvider<CustomEmailConfirmationTokenProvider
+            <CustomIdentityUser>>("CustomEmailConfirmation");
+
+            // MUA: Set token life span to 12 hours
+            services.Configure<DataProtectionTokenProviderOptions>(o => o.TokenLifespan = TimeSpan.FromHours(12));
+
+            // Changes token lifespan of just the Email Confirmation Token type
+            services.Configure<CustomEmailConfirmationTokenProviderOptions>(o => o.TokenLifespan = TimeSpan.FromDays(3));
+
             // MUA : Setup service to receive response in xml
             //services.AddMvc().AddXmlSerializerFormatters();
 
@@ -118,6 +129,7 @@ namespace CodeHub.NetCore5
             //services.AddSingleton<IEmployeeRepository, EmployeeRepository>();
             services.AddSingleton<IAuthorizationHandler, CanEditOnlyOtherAdminRolesAndClaimsHandler>(); // MUA : it is to achieve custom authorization requirements
             services.AddSingleton<IAuthorizationHandler, SuperAdminHandler>();
+            services.AddSingleton<DataProtectionPurposeStrings>();
             services.AddControllersWithViews();
         }
 

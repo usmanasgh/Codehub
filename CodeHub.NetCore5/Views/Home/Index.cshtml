@@ -17,8 +17,9 @@
             <img class="card-img-top ImageThumbnail" height="250" src="@PhotoPath" asp-append-version="true" />
             
             <div class="card-footer text-center">
-                <a asp-controller="home" asp-action="details" asp-route-id="@employee.Id" class="btn btn-primary">View</a>
-                
+                @*<a asp-controller="home" asp-action="details" asp-route-id="@employee.Id" class="btn btn-primary">View</a>*@
+                <a asp-controller="home" asp-action="details" asp-route-id="@employee.EncryptedId" class="btn btn-primary">View</a>
+
                 @*<a href="@Url.Action("details","home", new { id = employee.Id })" class="btn btn-primary">Show</a>
                 <a href="/home/details/@employee.Id" class="btn btn-primary">View</a>*@
 
