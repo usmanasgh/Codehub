@@ -29,17 +29,11 @@ namespace CodeHub.NetCore5
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddRazorPages();
-
-            //services.AddMvc(); // MUA: Adding this service to run MVC 1.1
-
-            //services.AddMvcCore();
-
+            
             services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DBConnection")));
 
             //services.AddIdentity<IdentityUser, IdentityRole>()
             //    .AddEntityFrameworkStores<AppDbContext>(); // 
-
 
             //services.AddIdentity<IdentityUser, IdentityRole>(options =>
             services.AddIdentity<CustomIdentityUser, IdentityRole>(options =>
@@ -68,14 +62,14 @@ namespace CodeHub.NetCore5
             // MUA : Setup service to receive response in xml
             //services.AddMvc().AddXmlSerializerFormatters();
 
-            // MUA : Adding authorize filter for entire application
-            services.AddMvc(options =>
-            {
-                var policy = new AuthorizationPolicyBuilder()
-                                  .RequireAuthenticatedUser()
-                                  .Build();
-                options.Filters.Add(new AuthorizeFilter(policy));
-            }).AddXmlSerializerFormatters();
+            // MUA : Adding authorize filter for entire application ************************************************
+            //services.AddMvc(options =>
+            //{
+            //    var policy = new AuthorizationPolicyBuilder()
+            //                      .RequireAuthenticatedUser()
+            //                      .Build();
+            //    options.Filters.Add(new AuthorizeFilter(policy));
+            //}).AddXmlSerializerFormatters();
 
             //services.AddAuthentication().AddGoogle(options =>
             //{
@@ -133,7 +127,11 @@ namespace CodeHub.NetCore5
             services.AddSingleton<IAuthorizationHandler, CanEditOnlyOtherAdminRolesAndClaimsHandler>(); // MUA : it is to achieve custom authorization requirements
             services.AddSingleton<IAuthorizationHandler, SuperAdminHandler>();
             services.AddSingleton<DataProtectionPurposeStrings>();
+            
             services.AddControllersWithViews();
+            services.AddRazorPages(); // MUA: Default service for razor pages
+            //services.AddMvc(); // MUA: Adding this service to run MVC 1.1
+            //services.AddMvcCore();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -196,12 +194,9 @@ namespace CodeHub.NetCore5
             //app.UseHttpsRedirection();
 
             app.UseStaticFiles(); // MUA : Adding new middleware request processing pipeline.
-
             app.UseRouting();
-
-            app.UseAuthentication();
-
-            app.UseAuthorization();
+            app.UseAuthentication(); // MUA : Access identity service - Logins etc
+            app.UseAuthorization();  // MUA: Either a user has the right to resource
 
             //app.Run(async (context) =>
             //{
@@ -212,9 +207,13 @@ namespace CodeHub.NetCore5
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                   name: "default",
-                   pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
+                //endpoints.MapControllers();
+
+                //endpoints.MapControllerRoute(
+                //   name: "default",
+                //   pattern: "{controller=Home}/{action=Index}/{id?}");
+
             });
         }
 
