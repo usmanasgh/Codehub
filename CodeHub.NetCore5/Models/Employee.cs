@@ -21,6 +21,7 @@ namespace CodeHub.NetCore5.Models
         [Required]
         public DepartmentEnum? Department { get; set; }
         public string PhotoPath { get; set; }
+
         //public List<IFormFile> Photos { get; set; } // MUA : For multiple files
     }
 }

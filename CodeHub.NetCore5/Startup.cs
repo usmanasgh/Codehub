@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Http;
 using CodeHub.NetCore5.Security;
 using System;
+using Microsoft.AspNetCore.Routing;
 
 namespace CodeHub.NetCore5
 {
@@ -132,6 +133,14 @@ namespace CodeHub.NetCore5
             services.AddRazorPages(); // MUA: Default service for razor pages
             //services.AddMvc(); // MUA: Adding this service to run MVC 1.1
             //services.AddMvcCore();
+
+            services.Configure<RouteOptions>(options =>
+            {
+                options.LowercaseUrls = true;
+                options.LowercaseQueryStrings = true;
+                options.AppendTrailingSlash = true;
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
