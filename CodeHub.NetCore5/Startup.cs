@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Http;
 using CodeHub.NetCore5.Security;
 using System;
 using Microsoft.AspNetCore.Routing;
+using CodeHub.NetCore5.Classes.Utilities;
 
 namespace CodeHub.NetCore5
 {
@@ -139,6 +140,7 @@ namespace CodeHub.NetCore5
                 options.LowercaseUrls = true;
                 options.LowercaseQueryStrings = true;
                 options.AppendTrailingSlash = true;
+                options.ConstraintMap.Add("even", typeof(EvenConstraint)); // MUA: Custom contraint for Razor Pages.
             });
 
         }

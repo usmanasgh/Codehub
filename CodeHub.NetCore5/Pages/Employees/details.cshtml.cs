@@ -22,9 +22,16 @@ namespace CodeHub.NetCore5.Pages.Employees
 
         // Model-binding automatically maps the query string id
         // value to the id parameter on this OnGet() method
-        public void OnGet(int id)
+        public IActionResult OnGet(int id)
         {
             Employee = employeeRepository.GetEmployee(id);
+
+            if (Employee == null)
+            {
+                return RedirectToPage("/NotFound");
+            }
+
+            return Page();
         }
     }
 }
