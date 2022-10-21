@@ -33,6 +33,11 @@ namespace CodeHub.NetCore5.Pages.Employees
         [BindProperty]
         public IFormFile Photo { get; set; }
 
+        [BindProperty]
+        public bool Notify { get; set; }
+
+        public string Message { get; set; }
+
         public IActionResult OnGet(int id)
         {
             Employee = employeeRepository.GetEmployee(id);
@@ -57,13 +62,29 @@ namespace CodeHub.NetCore5.Pages.Employees
                         "images", employee.PhotoPath);
                     System.IO.File.Delete(filePath);
                 }
+
                 // Save the new photo in wwwroot/images folder and update
                 // PhotoPath property of the employee object
+
                 employee.PhotoPath = ProcessUploadedFile();
             }
 
             Employee = employeeRepository.Update(employee);
             return RedirectToPage("Index");
+        }
+
+        public void OnPostUpdateNotificationPreferences(int id)
+        {
+            if (Notify)
+            {
+                Message = "Thank you for turning on notifications";
+            }
+            else
+            {
+                Message = "You have turned off email notifications";
+            }
+
+            Employee = employeeRepository.GetEmployee(id);
         }
 
         private string ProcessUploadedFile()

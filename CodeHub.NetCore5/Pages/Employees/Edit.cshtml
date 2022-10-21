@@ -1,4 +1,4 @@
-﻿@page "{id:min(1)}"
+﻿@page "{id:min(1)}/{handler?}"
 @model CodeHub.NetCore5.Pages.Employees.EditModel
 @{
     ViewData["Title"] = "Edit";
@@ -6,11 +6,33 @@
     var photoPath = "~/images/" + (Model.Employee.PhotoPath ?? "noimage.png");
 }
 
+<h1>Notification Preferences</h1>
+
+<form method="post" asp-page-handler="UpdateNotificationPreferences">
+    <div class="form-check">
+        <input asp-for="Notify" class="form-check-input" />
+        <label asp-for="Notify" class="form-check-label">
+            Receive email notification when my details change
+        </label>
+    </div>
+    <button type="submit" class="btn btn-primary">
+        Update Notification Preferences
+    </button>
+    @if (!string.IsNullOrEmpty(Model.Message))
+    {
+        <div class="alert alert-primary">
+            @Model.Message
+        </div>
+    }
+</form>
+
+<hr />
+
 <h1>Edit</h1>
 
-<form method="post" class="mt-3" enctype="multipart/form-data">
+<form method="post" class="mt-3" enctype="multipart/form-data"
+      asp-page-handler="OnPost">
     <input hidden asp-for="Employee.Id" />
-    @*Store employee existing Photo Path in a hidden field*@
     <input hidden asp-for="Employee.PhotoPath" />
 
     <div class="form-group row">
