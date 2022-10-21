@@ -41,9 +41,19 @@ namespace CodeHub.NetCore5.Pages.Employees
         [TempData]
         public string Message { get; set; }
 
-        public IActionResult OnGet(int id)
+        // Make the id parameter optional
+        public IActionResult OnGet(int? id)
         {
-            Employee = employeeRepository.GetEmployee(id);
+            // if id parameter has value, retrieve the existing
+            // employee details, else create a new Employee
+            if (id.HasValue)
+            {
+                Employee = employeeRepository.GetEmployee(id.Value);
+            }
+            else
+            {
+                Employee = new Employee();
+            }
 
             if (Employee == null)
             {
@@ -73,7 +83,16 @@ namespace CodeHub.NetCore5.Pages.Employees
                     Employee.PhotoPath = ProcessUploadedFile();
                 }
 
-                Employee = employeeRepository.Update(Employee);
+                // If Employee ID > 0, call Update() to update existing 
+                // employee details else call Add() to add new employee
+                if (Employee.Id > 0)
+                {
+                    Employee = employeeRepository.Update(Employee);
+                }
+                else
+                {
+                    Employee = employeeRepository.Add(Employee);
+                }
                 return RedirectToPage("Index");
             }
             return Page();
