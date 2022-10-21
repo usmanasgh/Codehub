@@ -2,11 +2,19 @@
 @model CodeHub.NetCore5.Pages.Employees.DeleteModel
 @{
     ViewData["Title"] = "Delete";
+
+    // Pass true using ViewData to tell the partial view
+    // to display View, Edit and Delete buttons
+    ViewData["ShowButtons"] = false;
 }
 
 <h1>Delete Confirmation</h1>
 
 <div class="alert alert-danger">
+
+    @*Render partial view passing it the model data and ViewData dictionary*@
+    <partial name="_DisplayEmployeePartial" model="Model.Employee" view-data="ViewData" />
+
     <h5>Are you sure you want to delete employee - @Model.Employee.Name</h5>
     <form method="post">
         <button type="submit" class="btn btn-danger">Yes</button>

@@ -3,6 +3,10 @@
 @model CodeHub.NetCore5.Pages.Employees.IndexModel
 @{
     ViewData["Title"] = "Index";
+
+    // Pass true using ViewData to tell the partial view
+    // to display View, Edit and Delete buttons
+    ViewData["ShowButtons"] = true;
 }
 
 <style>
@@ -14,25 +18,30 @@
 <h1>Employees</h1>
 
 <div class="card-deck">
+
+
     @foreach (var employee in Model.Employees)
     {
-        var photoPath = "~/images/" + (employee.PhotoPath ?? "noimage.png");
-        <div class="card m-3" style="min-width: 18rem; max-width:30.5%;">
-            <div class="card-header">
-                <h3>@employee.Name</h3>
-            </div>
-
-            <img class="card-img-top imageThumbnail" src="@photoPath"
-                 asp-append-version="true" />
-
-            <div class="card-footer text-center">
-                <a asp-page="/Employees/Details" asp-route-ID="@employee.Id"
-                   class="btn btn-primary m-1">View</a>
-                <a asp-page="/Employees/Edit" asp-route-ID="@employee.Id"
-                   class="btn btn-primary m-1">Edit</a>
-                <a asp-page="/Employees/Delete" asp-route-ID="@employee.Id"
-                   class="btn btn-danger m-1">Delete</a>
-            </div>
-        </div>
+        // Render partial view passing it the model data and ViewData dictionary
+        <partial name="_DisplayEmployeePartial" model="employee" view-data="ViewData" />
     }
+
+
+    @*@foreach (var employee in Model.Employees)
+        {
+            var photoPath = "~/images/" + (employee.PhotoPath ?? "noimage.png");
+            <div class="card m-3" style="min-width: 18rem; max-width:30.5%;">
+                <div class="card-header">
+                    <h3>@employee.Name</h3>
+                </div>
+
+                <img class="card-img-top imageThumbnail" src="@photoPath" asp-append-version="true" />
+
+                <div class="card-footer text-center">
+                    <a asp-page="/Employees/Details" asp-route-ID="@employee.Id" class="btn btn-primary m-1">View</a>
+                    <a asp-page="/Employees/Edit" asp-route-ID="@employee.Id" class="btn btn-primary m-1">Edit</a>
+                    <a asp-page="/Employees/Delete" asp-route-ID="@employee.Id" class="btn btn-danger m-1">Delete</a>
+                </div>
+            </div>
+        }*@
 </div>
