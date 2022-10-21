@@ -26,6 +26,7 @@ namespace CodeHub.NetCore5.Pages.Employees
             this.webHostEnvironment = webHostEnvironment;
         }
 
+        [BindProperty]
         public Employee Employee { get; set; }
 
         // We use this property to store and process
@@ -36,6 +37,8 @@ namespace CodeHub.NetCore5.Pages.Employees
         [BindProperty]
         public bool Notify { get; set; }
 
+        //[BindProperty(SupportsGet = true)]
+        [TempData]
         public string Message { get; set; }
 
         public IActionResult OnGet(int id)
@@ -52,28 +55,31 @@ namespace CodeHub.NetCore5.Pages.Employees
 
         public IActionResult OnPost(Employee employee)
         {
-            if (Photo != null)
+            if (ModelState.IsValid)
             {
-                // If a new photo is uploaded, the existing photo must be
-                // deleted. So check if there is an existing photo and delete
-                if (employee.PhotoPath != null)
+                if (Photo != null)
                 {
-                    string filePath = Path.Combine(webHostEnvironment.WebRootPath,
-                        "images", employee.PhotoPath);
-                    System.IO.File.Delete(filePath);
+                    // If a new photo is uploaded, the existing photo must be
+                    // deleted. So check if there is an existing photo and delete
+                    if (Employee.PhotoPath != null)
+                    {
+                        string filePath = Path.Combine(webHostEnvironment.WebRootPath,
+                            "images", Employee.PhotoPath);
+                        System.IO.File.Delete(filePath);
+                    }
+
+                    // Save the new photo in wwwroot/images folder and update
+                    // PhotoPath property of the employee object
+                    Employee.PhotoPath = ProcessUploadedFile();
                 }
 
-                // Save the new photo in wwwroot/images folder and update
-                // PhotoPath property of the employee object
-
-                employee.PhotoPath = ProcessUploadedFile();
+                Employee = employeeRepository.Update(Employee);
+                return RedirectToPage("Index");
             }
-
-            Employee = employeeRepository.Update(employee);
-            return RedirectToPage("Index");
+            return Page();
         }
 
-        public void OnPostUpdateNotificationPreferences(int id)
+        public IActionResult OnPostUpdateNotificationPreferences(int id)
         {
             if (Notify)
             {
@@ -84,7 +90,13 @@ namespace CodeHub.NetCore5.Pages.Employees
                 Message = "You have turned off email notifications";
             }
 
-            Employee = employeeRepository.GetEmployee(id);
+            // Store the confirmation message in TempData
+            TempData["message"] = Message;
+
+            // Redirect the request to Details razor page and pass along 
+            // EmployeeID and the message. EmployeeID is passed as route
+            // parameter and the message is passed as a query string
+            return RedirectToPage("Details", new { id = id });
         }
 
         private string ProcessUploadedFile()

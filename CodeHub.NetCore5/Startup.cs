@@ -138,6 +138,7 @@ namespace CodeHub.NetCore5
             services.Configure<RouteOptions>(options =>
             {
                 options.LowercaseUrls = true;
+                // Converts query strings to lowercase
                 options.LowercaseQueryStrings = true;
                 options.AppendTrailingSlash = true;
                 options.ConstraintMap.Add("even", typeof(EvenConstraint)); // MUA: Custom contraint for Razor Pages.
