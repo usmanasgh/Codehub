@@ -51,5 +51,29 @@ namespace CodeHub.NetCore5.Repositories
             context.SaveChanges();
             return employeeChanges;
         }
+
+        IEnumerable<DeptHeadCount> IEmployeeRepository.EmployeeCountByDept(DepartmentEnum? dept)
+        {
+            //return context.Employees.GroupBy(e => e.Department).Select(g => new DeptHeadCount()
+            //                                                    {
+            //                                                        Department = g.Key.Value,
+            //                                                        Count = g.Count()
+
+            //                                                    }).ToList();
+
+            IEnumerable<Employee> query = context.Employees;
+
+            if (dept.HasValue)
+            {
+                query = query.Where(e => e.Department == dept.Value);
+            }
+
+            return query.GroupBy(e => e.Department)
+                                .Select(g => new DeptHeadCount()
+                                {
+                                    Department = g.Key.Value,
+                                    Count = g.Count()
+                                }).ToList();
+        }
     }
 }

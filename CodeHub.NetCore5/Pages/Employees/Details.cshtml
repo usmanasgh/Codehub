@@ -12,9 +12,20 @@
         <div class="col-sm-8">
             <div class="alert alert-primary">
                 @TempData["message"]
+                @*@Model.Message*@
             </div>
         </div>
     }
+
+<div class="col-sm-8">
+    @*@await Component.InvokeAsync("HeadCount")*@
+
+    @await Component.InvokeAsync("HeadCount", new
+    {
+        department = Model.Employee.Department
+    })
+
+</div>
 
     <div class="col-sm-8">
         <div class="card">

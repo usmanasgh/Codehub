@@ -64,5 +64,10 @@ namespace CodeHub.NetCore5.Repositories
 
             return employee;
         }
+
+        public IEnumerable<DeptHeadCount> EmployeeCountByDept(DepartmentEnum? dept)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

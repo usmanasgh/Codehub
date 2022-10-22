@@ -13,5 +13,7 @@ namespace CodeHub.NetCore5.Interface
         Employee Add(Employee employee);
         Employee Update(Employee employee);
         Employee Delete(int Id);
+
+        IEnumerable<DeptHeadCount> EmployeeCountByDept(DepartmentEnum? dept);
     }
 }
