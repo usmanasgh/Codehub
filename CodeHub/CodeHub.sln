@@ -21,16 +21,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "All_SQL", "All_SQL", "{5D22
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ChangeSet", "ChangeSet", "{FA225FFE-47F9-40C1-9527-27DAA19621AF}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\Desktop\CodeHub\SQL\ChangeSet\iCodeHub_1.0.sql = ..\..\..\..\Desktop\CodeHub\SQL\ChangeSet\iCodeHub_1.0.sql
-		..\..\..\..\Desktop\CodeHub\SQL\ChangeSet\tCodeHub_1.0.sql = ..\..\..\..\Desktop\CodeHub\SQL\ChangeSet\tCodeHub_1.0.sql
+		..\SQL\ChangeSet\iCodeHub_1.0.sql = ..\SQL\ChangeSet\iCodeHub_1.0.sql
+		..\SQL\ChangeSet\tCodeHub_1.0.sql = ..\SQL\ChangeSet\tCodeHub_1.0.sql
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{13368B03-2C7A-44C0-92C1-650867D47D3B}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\Desktop\CodeHub\SQL\Schema\iAccessRights.sql = ..\..\..\..\Desktop\CodeHub\SQL\Schema\iAccessRights.sql
-		..\..\..\..\Desktop\CodeHub\SQL\Schema\pCodeHub.sql = ..\..\..\..\Desktop\CodeHub\SQL\Schema\pCodeHub.sql
-		..\..\..\..\Desktop\CodeHub\SQL\Schema\pCodeHubAuto.sql = ..\..\..\..\Desktop\CodeHub\SQL\Schema\pCodeHubAuto.sql
-		..\..\..\..\Desktop\CodeHub\SQL\Schema\tCodeHub.sql = ..\..\..\..\Desktop\CodeHub\SQL\Schema\tCodeHub.sql
+		..\SQL\Schema\iAccessRights.sql = ..\SQL\Schema\iAccessRights.sql
+		..\SQL\Schema\pCodeHub.sql = ..\SQL\Schema\pCodeHub.sql
+		..\SQL\Schema\pCodeHubAuto.sql = ..\SQL\Schema\pCodeHubAuto.sql
+		..\SQL\Schema\tCodeHub.sql = ..\SQL\Schema\tCodeHub.sql
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Angular", "Angular", "{D4E66882-9D69-4D6D-AB9B-76AE0494A8BA}"

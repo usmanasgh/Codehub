@@ -69,5 +69,17 @@ namespace CodeHub.NetCore5.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<Employee> Search(string searchTerm = null)
+        {
+            if (string.IsNullOrEmpty(searchTerm))
+            {
+                return employeeList;
+            }
+
+            return employeeList.Where(e => e.Name.Contains(searchTerm) ||
+                                            e.Email.Contains(searchTerm)).ToList();
+        }
+
     }
 }
