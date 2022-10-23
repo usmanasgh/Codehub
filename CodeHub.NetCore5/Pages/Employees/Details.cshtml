@@ -18,12 +18,13 @@
     }
 
 <div class="col-sm-8">
-    @*@await Component.InvokeAsync("HeadCount")*@
 
-    @await Component.InvokeAsync("HeadCount", new
-    {
-        department = Model.Employee.Department
-    })
+    @*@await Component.InvokeAsync("HeadCount")
+
+
+    @await Component.InvokeAsync("HeadCount", new { department = Model.Employee.Department })*@
+
+    <vc:head-count department="@Model.Employee.Department"></vc:head-count>
 
 </div>
 
