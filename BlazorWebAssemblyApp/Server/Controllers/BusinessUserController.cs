@@ -11,10 +11,10 @@ namespace BlazorWebAssemblyApp.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase // MUA : Remember ControllerBase class belongs to AspNetCore WebAPI
+    public class BusinessUserController : ControllerBase // MUA : Remember ControllerBase class belongs to AspNetCore WebAPI
     {
-        private readonly IUserRepository userRepository;
-        public UsersController(IUserRepository userRepository)
+        private readonly IBusinessUserRepository userRepository;
+        public BusinessUserController(IBusinessUserRepository userRepository)
         {
             this.userRepository = userRepository;
         }

@@ -19,6 +19,7 @@ namespace BlazorWebAssemblyApp.Server.Models
 
         public DbSet<BusinessEmployee> BusinessEmployees { get; set; }
         public DbSet<BusinessUser> BusinessUsers { get; set; }
+        public DbSet<BusinessDepartment> BusinessDepartments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -46,6 +47,55 @@ namespace BlazorWebAssemblyApp.Server.Models
                 RoleId = (int)Enums.Role.Admin,
                 Phone = "Test",
                 Email = "usmanasgh@gmail.com"
+            });
+
+            // Seed Employee Table
+            modelBuilder.Entity<BusinessEmployee>().HasData(new BusinessEmployee
+            {
+                EmployeeId = 1,
+                FirstName = "John",
+                LastName = "Hastings",
+                Email = "David@pragimtech.com",
+                DateOfBrith = new DateTime(1980, 10, 5),
+                Gender = BusinessGender.Male,
+                DepartmentId = 1,
+                PhotoPath = "images/john.png"
+            });
+
+            modelBuilder.Entity<BusinessEmployee>().HasData(new BusinessEmployee
+            {
+                EmployeeId = 2,
+                FirstName = "Sam",
+                LastName = "Galloway",
+                Email = "Sam@pragimtech.com",
+                DateOfBrith = new DateTime(1981, 12, 22),
+                Gender = BusinessGender.Male,
+                DepartmentId = 2,
+                PhotoPath = "images/sam.jpg"
+            });
+
+            modelBuilder.Entity<BusinessEmployee>().HasData(new BusinessEmployee
+            {
+                EmployeeId = 3,
+                FirstName = "Mary",
+                LastName = "Smith",
+                Email = "mary@pragimtech.com",
+                DateOfBrith = new DateTime(1979, 11, 11),
+                Gender = BusinessGender.Female,
+                DepartmentId = 1,
+                PhotoPath = "images/mary.png"
+            });
+
+            modelBuilder.Entity<BusinessEmployee>().HasData(new BusinessEmployee
+            {
+                EmployeeId = 4,
+                FirstName = "Sara",
+                LastName = "Longway",
+                Email = "sara@pragimtech.com",
+                DateOfBrith = new DateTime(1982, 9, 23),
+                Gender = BusinessGender.Female,
+                DepartmentId = 3,
+                PhotoPath = "images/sara.png"
             });
         }
     }

@@ -6,7 +6,7 @@ using BlazorWebAssemblyApp.Shared.Business;
 
 namespace BlazorWebAssemblyApp.Server.Interface
 {
-    public interface IUserRepository
+    public interface IBusinessUserRepository
     {
         Task<IEnumerable<BusinessUser>> Search(string username, string email);
         Task<IEnumerable<BusinessUser>> GetUsers();

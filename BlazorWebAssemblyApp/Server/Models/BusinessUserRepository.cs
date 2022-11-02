@@ -8,10 +8,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BlazorWebAssemblyApp.Server.Models
 {
-    public class UserRepository : IUserRepository
+    public class BusinessUserRepository : IBusinessUserRepository
     {
         private readonly AppDbContext appDbContext;
-        public UserRepository(AppDbContext appDbContext)
+        public BusinessUserRepository(AppDbContext appDbContext)
         {
             this.appDbContext = appDbContext;
         }

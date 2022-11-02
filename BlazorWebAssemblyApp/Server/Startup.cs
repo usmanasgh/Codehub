@@ -28,9 +28,11 @@ namespace BlazorWebAssemblyApp.Server
         {
             // MUA: Add DbContext Service
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
-            services.AddScoped<IUserRepository, UserRepository>();
-
             
+            services.AddScoped<IBusinessUserRepository, BusinessUserRepository>();
+            services.AddScoped<IBusinessDepartmentRepository, BusinessDepartmentRepository>();
+            services.AddScoped<IBusinessEmployeeRepository, BusinessEmployeeRepository>();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddSyncfusionBlazor(); // MUA : Add new reference
