@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BlazorWebAssemblyApp.Shared.Business
 {
-    public class User
+    public class BusinessUser
     {
         [Key]
         public Guid Id { get; set; }
@@ -29,6 +29,6 @@ namespace BlazorWebAssemblyApp.Shared.Business
         public virtual int RoleId { get; set; }
 
         [ForeignKey("RoleId")]
-        public virtual Role Roles { get; set; }
+        public virtual BusinessRole Roles { get; set; }
     }
 }

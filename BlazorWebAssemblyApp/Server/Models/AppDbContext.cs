@@ -17,16 +17,27 @@ namespace BlazorWebAssemblyApp.Server.Models
 
         }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<BusinessEmployee> BusinessEmployees { get; set; }
+        public DbSet<BusinessUser> BusinessUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Role>().HasData(new Role { Id = (int)Enums.Role.Admin, Name = "Administrator", ShortName = "Admin" });
-            modelBuilder.Entity<Role>().HasData(new Role { Id = (int)Enums.Role.Standard, Name = "Standard", ShortName = "Std" });
+            modelBuilder.Entity<BusinessRole>().HasData(new BusinessRole { Id = (int)Enums.Role.Admin, Name = "Administrator", ShortName = "Admin" });
+            modelBuilder.Entity<BusinessRole>().HasData(new BusinessRole { Id = (int)Enums.Role.Standard, Name = "Standard", ShortName = "Std" });
 
-            modelBuilder.Entity<User>().HasData(new User
+            //Seed Departments Table
+            modelBuilder.Entity<BusinessDepartment>().HasData(
+                new BusinessDepartment { DepartmentId = 1, DepartmentName = "IT" });
+            modelBuilder.Entity<BusinessDepartment>().HasData(
+                new BusinessDepartment { DepartmentId = 2, DepartmentName = "HR" });
+            modelBuilder.Entity<BusinessDepartment>().HasData(
+                new BusinessDepartment { DepartmentId = 3, DepartmentName = "Payroll" });
+            modelBuilder.Entity<BusinessDepartment>().HasData(
+                new BusinessDepartment { DepartmentId = 4, DepartmentName = "Admin" });
+
+            modelBuilder.Entity<BusinessUser>().HasData(new BusinessUser
             {
                 Id = new Guid("7C16155F-C2C9-4130-A5D1-B7B1FA44B1C7"),
                 FirstName = "Usman",

@@ -15,12 +15,12 @@ namespace BlazorWebAssemblyApp.Client.Services
         {
             this.httpClient = httpClient;
         }
-        public async Task<IEnumerable<User>> GetUsers()
+        public async Task<IEnumerable<BusinessUser>> GetUsers()
         {
-            return await httpClient.GetFromJsonAsync<IEnumerable<User>>("/api/users");
+            return await httpClient.GetFromJsonAsync<IEnumerable<BusinessUser>>("/api/users");
         }
 
-        Task<User> IUserService.AddUser(User user)
+        Task<BusinessUser> IUserService.AddUser(BusinessUser user)
         {
             throw new NotImplementedException();
         }
@@ -30,22 +30,22 @@ namespace BlazorWebAssemblyApp.Client.Services
             throw new NotImplementedException();
         }
 
-        Task<User> IUserService.GetUser(Guid userId)
+        Task<BusinessUser> IUserService.GetUser(Guid userId)
         {
             throw new NotImplementedException();
         }
 
-        Task<User> IUserService.GetUserByUsername(string username)
+        Task<BusinessUser> IUserService.GetUserByUsername(string username)
         {
             throw new NotImplementedException();
         }
 
-        Task<IEnumerable<User>> IUserService.Search(string username, string email)
+        Task<IEnumerable<BusinessUser>> IUserService.Search(string username, string email)
         {
             throw new NotImplementedException();
         }
 
-        Task<User> IUserService.UpdateUser(User user)
+        Task<BusinessUser> IUserService.UpdateUser(BusinessUser user)
         {
             throw new NotImplementedException();
         }

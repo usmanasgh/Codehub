@@ -8,7 +8,7 @@ using BlazorWebAssemblyApp.Shared.Common;
 
 namespace BlazorWebAssemblyApp.Shared.Business
 {
-    public class Role
+    public class BusinessRole
     {
         [Key]
         public int Id { get; set; }

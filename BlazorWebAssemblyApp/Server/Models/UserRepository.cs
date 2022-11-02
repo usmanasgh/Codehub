@@ -15,51 +15,47 @@ namespace BlazorWebAssemblyApp.Server.Models
         {
             this.appDbContext = appDbContext;
         }
-        public async Task<User> AddUser(User user)
+        public async Task<BusinessUser> AddUser(BusinessUser user)
         {
             if(user.Roles != null)
             {
                 appDbContext.Entry(user.Roles).State = EntityState.Unchanged; // MUA: Ignore to create new entry for new roles
             }
             
-            var result = await appDbContext.Users.AddAsync(user);
+            var result = await appDbContext.BusinessUsers.AddAsync(user);
             await appDbContext.SaveChangesAsync();
             return result.Entity;
         }
 
         public async Task DeleteUser(Guid userId)
         {
-            var result = await appDbContext.Users
+            var result = await appDbContext.BusinessUsers
                 .FirstOrDefaultAsync(u => u.Id == userId);
             if (result != null)
             {
-                appDbContext.Users.Remove(result);
+                appDbContext.BusinessUsers.Remove(result);
                 await appDbContext.SaveChangesAsync();
             }
         }
 
-        public async Task<User> GetUser(Guid userId)
+        public async Task<BusinessUser> GetUser(Guid userId)
         {
-            return await appDbContext.Users
-                .Include(u => u.Roles)
-                .FirstOrDefaultAsync(u => u.Id == userId);
+            return await appDbContext.BusinessUsers.Include(u => u.Roles).FirstOrDefaultAsync(u => u.Id == userId);
         }
 
-        public async Task<User> GetUserByUsername(string username)
+        public async Task<BusinessUser> GetUserByUsername(string username)
         {
-            return await appDbContext.Users
-                .Include(u => u.Roles)
-                .FirstOrDefaultAsync(u => u.Username == username);
+            return await appDbContext.BusinessUsers.Include(u => u.Roles).FirstOrDefaultAsync(u => u.Username == username);
         }
 
-        public async Task<IEnumerable<User>> GetUsers()
+        public async Task<IEnumerable<BusinessUser>> GetUsers()
         {
-            return await appDbContext.Users.ToListAsync();
+            return await appDbContext.BusinessUsers.ToListAsync();
         }
 
-        public async Task<IEnumerable<User>> Search(string username, string email)
+        public async Task<IEnumerable<BusinessUser>> Search(string username, string email)
         {
-            IQueryable<User> query = appDbContext.Users;
+            IQueryable<BusinessUser> query = appDbContext.BusinessUsers;
 
             if (!string.IsNullOrEmpty(username) || !string.IsNullOrEmpty(email))
             {
@@ -71,9 +67,9 @@ namespace BlazorWebAssemblyApp.Server.Models
             return await query.ToListAsync();
         }
 
-        public async Task<User> UpdateUser(User user)
+        public async Task<BusinessUser> UpdateUser(BusinessUser user)
         {
-            var result = await appDbContext.Users
+            var result = await appDbContext.BusinessUsers
                 .FirstOrDefaultAsync(u => u.Id == user.Id);
 
             if(result != null)

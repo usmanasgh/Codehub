@@ -16,11 +16,11 @@ else
 {
     <SfGrid DataSource="@Users">
         <GridColumns>
-            <GridColumn Field="@nameof(User.Username)" HeaderText="Username"></GridColumn>
-            <GridColumn Field="@nameof(User.FirstName)" HeaderText="FirstName"></GridColumn>
-            <GridColumn Field="@nameof(User.LastName)" HeaderText="LastName"></GridColumn>
-            <GridColumn Field="@nameof(User.RoleId)" HeaderText="Role"></GridColumn>
-            <GridColumn Field="@nameof(User.Phone)" HeaderText="Phone"></GridColumn>
+            <GridColumn Field="@nameof(BusinessUser.Username)" HeaderText="Username"></GridColumn>
+            <GridColumn Field="@nameof(BusinessUser.FirstName)" HeaderText="FirstName"></GridColumn>
+            <GridColumn Field="@nameof(BusinessUser.LastName)" HeaderText="LastName"></GridColumn>
+            <GridColumn Field="@nameof(BusinessUser.RoleId)" HeaderText="Role"></GridColumn>
+            <GridColumn Field="@nameof(BusinessUser.Phone)" HeaderText="Phone"></GridColumn>
         </GridColumns>
     </SfGrid>
 }
@@ -28,7 +28,7 @@ else
 
 @code{
 
-    public List<User> Users { get; set; }
+    public List<BusinessUser> Users { get; set; }
 
     [Inject]
     public IUserService UserService { get; set; }

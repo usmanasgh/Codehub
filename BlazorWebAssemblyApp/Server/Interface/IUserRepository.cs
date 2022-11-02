@@ -8,12 +8,12 @@ namespace BlazorWebAssemblyApp.Server.Interface
 {
     public interface IUserRepository
     {
-        Task<IEnumerable<User>> Search(string username, string email);
-        Task<IEnumerable<User>> GetUsers();
-        Task<User> GetUser(Guid userId);
-        Task<User> GetUserByUsername(string username);
-        Task<User> AddUser(User user);
-        Task<User> UpdateUser(User user);
+        Task<IEnumerable<BusinessUser>> Search(string username, string email);
+        Task<IEnumerable<BusinessUser>> GetUsers();
+        Task<BusinessUser> GetUser(Guid userId);
+        Task<BusinessUser> GetUserByUsername(string username);
+        Task<BusinessUser> AddUser(BusinessUser user);
+        Task<BusinessUser> UpdateUser(BusinessUser user);
         Task DeleteUser(Guid userId);
 
     }

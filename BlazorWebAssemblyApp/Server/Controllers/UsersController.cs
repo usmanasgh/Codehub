@@ -20,7 +20,7 @@ namespace BlazorWebAssemblyApp.Server.Controllers
         }
 
         [HttpGet("{search}")]
-        public async Task<ActionResult<IEnumerable<User>>> Search(string username, string email, int? roleId)
+        public async Task<ActionResult<IEnumerable<BusinessUser>>> Search(string username, string email, int? roleId)
         {
             try
             {
@@ -82,7 +82,7 @@ namespace BlazorWebAssemblyApp.Server.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateUser(User user)
+        public async Task<ActionResult> CreateUser(BusinessUser user)
         {
             try
             {
@@ -120,7 +120,7 @@ namespace BlazorWebAssemblyApp.Server.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> UpdateUser(Guid Id ,User user)
+        public async Task<ActionResult> UpdateUser(Guid Id ,BusinessUser user)
         {
             //MUA: testing done ?
             try
