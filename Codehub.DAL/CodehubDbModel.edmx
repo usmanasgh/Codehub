@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CodehubModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BusinessDepartments">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="BusinessEmployees">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="DateOfBrith" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Gender" Type="int" Nullable="false" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="PhotoPath" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="BusinessRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ShortName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="BusinessUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Department" Type="int" Nullable="false" />
+          <Property Name="PhotoPath" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_BusinessEmployees_BusinessDepartments_DepartmentId">
+          <End Role="BusinessDepartments" Type="Self.BusinessDepartments" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BusinessEmployees" Type="Self.BusinessEmployees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessDepartments">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="BusinessEmployees">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessUsers_BusinessRole_RoleId">
+          <End Role="BusinessRole" Type="Self.BusinessRole" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BusinessUsers" Type="Self.BusinessUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BusinessUsers">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CodehubModelStoreContainer">
+          <EntitySet Name="BusinessDepartments" EntityType="Self.BusinessDepartments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BusinessEmployees" EntityType="Self.BusinessEmployees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BusinessRole" EntityType="Self.BusinessRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BusinessUsers" EntityType="Self.BusinessUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BusinessEmployees_BusinessDepartments_DepartmentId" Association="Self.FK_BusinessEmployees_BusinessDepartments_DepartmentId">
+            <End Role="BusinessDepartments" EntitySet="BusinessDepartments" />
+            <End Role="BusinessEmployees" EntitySet="BusinessEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessUsers_BusinessRole_RoleId" Association="Self.FK_BusinessUsers_BusinessRole_RoleId">
+            <End Role="BusinessRole" EntitySet="BusinessRole" />
+            <End Role="BusinessUsers" EntitySet="BusinessUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CodehubModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BusinessDepartment">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BusinessEmployees" Relationship="Self.FK_BusinessEmployees_BusinessDepartments_DepartmentId" FromRole="BusinessDepartments" ToRole="BusinessEmployees" />
+        </EntityType>
+        <EntityType Name="BusinessEmployee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBrith" Type="DateTime" Nullable="false" />
+          <Property Name="Gender" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="PhotoPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BusinessDepartment" Relationship="Self.FK_BusinessEmployees_BusinessDepartments_DepartmentId" FromRole="BusinessEmployees" ToRole="BusinessDepartments" />
+        </EntityType>
+        <EntityType Name="BusinessRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShortName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BusinessUsers" Relationship="Self.FK_BusinessUsers_BusinessRole_RoleId" FromRole="BusinessRole" ToRole="BusinessUsers" />
+        </EntityType>
+        <EntityType Name="BusinessUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BusinessRole" Relationship="Self.FK_BusinessUsers_BusinessRole_RoleId" FromRole="BusinessUsers" ToRole="BusinessRole" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Department" Type="Int32" Nullable="false" />
+          <Property Name="PhotoPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_BusinessEmployees_BusinessDepartments_DepartmentId">
+          <End Role="BusinessDepartments" Type="Self.BusinessDepartment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BusinessEmployees" Type="Self.BusinessEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessDepartments">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="BusinessEmployees">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessUsers_BusinessRole_RoleId">
+          <End Role="BusinessRole" Type="Self.BusinessRole" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BusinessUsers" Type="Self.BusinessUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BusinessUsers">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CodehubEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BusinessDepartments" EntityType="Self.BusinessDepartment" />
+          <EntitySet Name="BusinessEmployees" EntityType="Self.BusinessEmployee" />
+          <EntitySet Name="BusinessRoles" EntityType="Self.BusinessRole" />
+          <EntitySet Name="BusinessUsers" EntityType="Self.BusinessUser" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <AssociationSet Name="FK_BusinessEmployees_BusinessDepartments_DepartmentId" Association="Self.FK_BusinessEmployees_BusinessDepartments_DepartmentId">
+            <End Role="BusinessDepartments" EntitySet="BusinessDepartments" />
+            <End Role="BusinessEmployees" EntitySet="BusinessEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessUsers_BusinessRole_RoleId" Association="Self.FK_BusinessUsers_BusinessRole_RoleId">
+            <End Role="BusinessRole" EntitySet="BusinessRoles" />
+            <End Role="BusinessUsers" EntitySet="BusinessUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CodehubModelStoreContainer" CdmEntityContainer="CodehubEntities">
+          <EntitySetMapping Name="BusinessDepartments">
+            <EntityTypeMapping TypeName="CodehubModel.BusinessDepartment">
+              <MappingFragment StoreEntitySet="BusinessDepartments">
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BusinessEmployees">
+            <EntityTypeMapping TypeName="CodehubModel.BusinessEmployee">
+              <MappingFragment StoreEntitySet="BusinessEmployees">
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DateOfBrith" ColumnName="DateOfBrith" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BusinessRoles">
+            <EntityTypeMapping TypeName="CodehubModel.BusinessRole">
+              <MappingFragment StoreEntitySet="BusinessRole">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BusinessUsers">
+            <EntityTypeMapping TypeName="CodehubModel.BusinessUser">
+              <MappingFragment StoreEntitySet="BusinessUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="CodehubModel.Employee">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

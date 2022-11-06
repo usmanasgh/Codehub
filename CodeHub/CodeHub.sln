@@ -37,6 +37,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Angular", "Angular", "{D4E6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "React", "React", "{BFA95773-83DC-4258-ABC3-35E0B49E6EEC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codehub.DAL", "..\Codehub.DAL\Codehub.DAL.csproj", "{D5F04986-4F4E-4DA3-B3F7-5BF97EDCFB77}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{15D22ED7-FF25-4109-96D0-EA2C5B19F442}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15D22ED7-FF25-4109-96D0-EA2C5B19F442}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15D22ED7-FF25-4109-96D0-EA2C5B19F442}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5F04986-4F4E-4DA3-B3F7-5BF97EDCFB77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5F04986-4F4E-4DA3-B3F7-5BF97EDCFB77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5F04986-4F4E-4DA3-B3F7-5BF97EDCFB77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5F04986-4F4E-4DA3-B3F7-5BF97EDCFB77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
