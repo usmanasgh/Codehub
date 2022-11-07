@@ -46,16 +46,6 @@
           <Property Name="Phone" Type="nvarchar(max)" />
           <Property Name="RoleId" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Employees">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Department" Type="int" Nullable="false" />
-          <Property Name="PhotoPath" Type="nvarchar(max)" />
-        </EntityType>
         <Association Name="FK_BusinessEmployees_BusinessDepartments_DepartmentId">
           <End Role="BusinessDepartments" Type="Self.BusinessDepartments" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -89,7 +79,6 @@
           <EntitySet Name="BusinessEmployees" EntityType="Self.BusinessEmployees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BusinessRole" EntityType="Self.BusinessRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BusinessUsers" EntityType="Self.BusinessUsers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_BusinessEmployees_BusinessDepartments_DepartmentId" Association="Self.FK_BusinessEmployees_BusinessDepartments_DepartmentId">
             <End Role="BusinessDepartments" EntitySet="BusinessDepartments" />
             <End Role="BusinessEmployees" EntitySet="BusinessEmployees" />
@@ -120,7 +109,7 @@
           <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="DateOfBrith" Type="DateTime" Nullable="false" />
+          <Property Name="DateOfBrith" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Gender" Type="Int32" Nullable="false" />
           <Property Name="DepartmentId" Type="Int32" Nullable="false" />
           <Property Name="PhotoPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -148,16 +137,6 @@
           <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="RoleId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="BusinessRole" Relationship="Self.FK_BusinessUsers_BusinessRole_RoleId" FromRole="BusinessUsers" ToRole="BusinessRole" />
-        </EntityType>
-        <EntityType Name="Employee">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Department" Type="Int32" Nullable="false" />
-          <Property Name="PhotoPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_BusinessEmployees_BusinessDepartments_DepartmentId">
           <End Role="BusinessDepartments" Type="Self.BusinessDepartment" Multiplicity="1">
@@ -192,7 +171,6 @@
           <EntitySet Name="BusinessEmployees" EntityType="Self.BusinessEmployee" />
           <EntitySet Name="BusinessRoles" EntityType="Self.BusinessRole" />
           <EntitySet Name="BusinessUsers" EntityType="Self.BusinessUser" />
-          <EntitySet Name="Employees" EntityType="Self.Employee" />
           <AssociationSet Name="FK_BusinessEmployees_BusinessDepartments_DepartmentId" Association="Self.FK_BusinessEmployees_BusinessDepartments_DepartmentId">
             <End Role="BusinessDepartments" EntitySet="BusinessDepartments" />
             <End Role="BusinessEmployees" EntitySet="BusinessEmployees" />
@@ -253,17 +231,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Employees">
-            <EntityTypeMapping TypeName="CodehubModel.Employee">
-              <MappingFragment StoreEntitySet="Employees">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Department" ColumnName="Department" />
-                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -281,6 +248,7 @@
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
