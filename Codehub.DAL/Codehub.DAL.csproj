@@ -51,61 +51,59 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessDepartment.cs">
-      <DependentUpon>CodehubDbModel.tt</DependentUpon>
+      <DependentUpon>CodeHubDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="BusinessEmployee.cs">
-      <DependentUpon>CodehubDbModel.tt</DependentUpon>
+      <DependentUpon>CodeHubDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="BusinessRole.cs">
-      <DependentUpon>CodehubDbModel.tt</DependentUpon>
+      <DependentUpon>CodeHubDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="BusinessUser.cs">
-      <DependentUpon>CodehubDbModel.tt</DependentUpon>
+      <DependentUpon>CodeHubDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodehubDbModel.Context.cs">
+    <Compile Include="CodeHubDbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CodehubDbModel.Context.tt</DependentUpon>
+      <DependentUpon>CodeHubDbModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodehubDbModel.cs">
+    <Compile Include="CodeHubDbModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CodehubDbModel.tt</DependentUpon>
+      <DependentUpon>CodeHubDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodehubDbModel.Designer.cs">
+    <Compile Include="CodeHubDbModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CodehubDbModel.edmx</DependentUpon>
+      <DependentUpon>CodeHubDbModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="CodehubDbModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CodehubDbModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.Config" />
-    <None Include="CodehubDbModel.edmx.diagram">
-      <DependentUpon>CodehubDbModel.edmx</DependentUpon>
+    <EntityDeploy Include="CodeHubDbModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CodeHubDbModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="CodeHubDbModel.edmx.diagram">
+      <DependentUpon>CodeHubDbModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CodehubDbModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CodehubDbModel.Context.cs</LastGenOutput>
-      <DependentUpon>CodehubDbModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="CodehubDbModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CodehubDbModel.edmx</DependentUpon>
-      <LastGenOutput>CodehubDbModel.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="CodeHubDbModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CodeHubDbModel.edmx</DependentUpon>
+      <LastGenOutput>CodeHubDbModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CodeHubDbModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CodeHubDbModel.edmx</DependentUpon>
+      <LastGenOutput>CodeHubDbModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Codehub.DAL;
+using CodeHub.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,13 +11,18 @@ namespace CodeHub.Controllers
 {
     public class BusinessEmployeeController : ApiController
     {
-        //public IEnumerable<Employee> Get()
-        //{
-        //    using (EmployeeDBEntities entities = new EmployeeDBEntities())
+        //using (CodehubEntities entities = new CodehubEntities())
         //    {
-        //        return entities.Employees.ToList();
+        //        return null;
         //    }
-        //}
+
+        public IEnumerable<TempModel> Get()
+        {
+            using (CodehubEntities entities = new CodehubEntities())
+            {
+                return (IEnumerable<TempModel>)entities.BusinessEmployees.ToList();
+            }
+        }
 
         //public Employee Get(int id)
         //{
