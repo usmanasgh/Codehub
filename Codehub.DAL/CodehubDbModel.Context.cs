@@ -29,5 +29,6 @@ namespace Codehub.DAL
         public virtual DbSet<BusinessEmployee> BusinessEmployees { get; set; }
         public virtual DbSet<BusinessRole> BusinessRoles { get; set; }
         public virtual DbSet<BusinessUser> BusinessUsers { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
     }
 }

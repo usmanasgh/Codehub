@@ -5,12 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ceff17e45779422e897161269d3385cc" Name="Diagram1">
-        <EntityTypeShape EntityType="CodehubModel.BusinessDepartment" Width="1.5" PointX="5.375" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CodehubModel.BusinessEmployee" Width="1.5" PointX="7.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CodehubModel.BusinessDepartment" Width="1.5" PointX="4.875" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CodehubModel.BusinessEmployee" Width="1.5" PointX="6.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="CodehubModel.BusinessRole" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CodehubModel.BusinessUser" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="CodehubModel.FK_BusinessEmployees_BusinessDepartments_DepartmentId" ManuallyRouted="false" />
         <AssociationConnector Association="CodehubModel.FK_BusinessUsers_BusinessRole_RoleId" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CodehubModel.Employee" Width="1.5" PointX="9.625" PointY="1.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
