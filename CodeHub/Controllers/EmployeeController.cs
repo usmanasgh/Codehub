@@ -23,22 +23,44 @@ namespace CodeHub.Controllers
         //    }
         //}
 
-        //public HttpResponseMessage Get(int id)
-        //{
-        //    using (CodehubEntities entities = new CodehubEntities())
-        //    {
-        //        var entity = entities.Employees.FirstOrDefault(e => e.Id == id);
-        //        if (entity != null)
-        //        {
-        //            return Request.CreateResponse(HttpStatusCode.OK, entity);
-        //        }
-        //        else
-        //        {
-        //            return Request.CreateErrorResponse(HttpStatusCode.NotFound,
-        //                "Employee with Id " + id.ToString() + " not found");
-        //        }
-        //    }
-        //}
+        public HttpResponseMessage Get(int id)
+        {
+            using (CodehubEntities entities = new CodehubEntities())
+            {
+                var entity = entities.Employees.FirstOrDefault(e => e.Id == id);
+                if (entity != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, entity);
+                }
+                else
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound,
+                        "Employee with Id " + id.ToString() + " not found");
+                }
+            }
+        }
+
+        public HttpResponseMessage Get(string gender = "All")
+        {
+            using (CodehubEntities entities = new CodehubEntities())
+            {
+                switch (gender.ToLower())
+                {
+                    case "all":
+                        return Request.CreateResponse(HttpStatusCode.OK,
+                            entities.Employees.ToList());
+                    case "male":
+                        return Request.CreateResponse(HttpStatusCode.OK,
+                            entities.Employees.Where(e => e.Gender.ToLower() == "male").ToList());
+                    case "female":
+                        return Request.CreateResponse(HttpStatusCode.OK,
+                            entities.Employees.Where(e => e.Gender.ToLower() == "female").ToList());
+                    default:
+                        return Request.CreateErrorResponse(HttpStatusCode.BadRequest,
+                            "Value for gender must be Male, Female or All. " + gender + " is invalid.");
+                }
+            }
+        }
 
         public HttpResponseMessage Post([FromBody] Employee employee)
         {
@@ -87,7 +109,7 @@ namespace CodeHub.Controllers
             }
         }
 
-        public HttpResponseMessage Put(int id, [FromBody] Employee employee)
+        public HttpResponseMessage Put([FromUri] int id, [FromBody] Employee employee)
         {
             try
             {
@@ -137,32 +159,32 @@ namespace CodeHub.Controllers
          will fail, because ASP.NET Web API does not know it has to map the GET request to this method.
          */
 
-        [HttpGet]
-        public IEnumerable<Employee> LoadEmployees()
-        {
-            using (CodehubEntities entities = new CodehubEntities())
-            {
-                return entities.Employees.ToList();
-            }
-        }
+        //[HttpGet]
+        //public IEnumerable<Employee> LoadEmployees()
+        //{
+        //    using (CodehubEntities entities = new CodehubEntities())
+        //    {
+        //        return entities.Employees.ToList();
+        //    }
+        //}
 
-        [HttpGet]
-        public HttpResponseMessage LoadEmployeeById(int id)
-        {
-            using (CodehubEntities entities = new CodehubEntities())
-            {
-                var entity = entities.Employees.FirstOrDefault(e => e.Id == id);
-                if (entity != null)
-                {
-                    return Request.CreateResponse(HttpStatusCode.OK, entity);
-                }
-                else
-                {
-                    return Request.CreateErrorResponse(HttpStatusCode.NotFound,
-                        "Employee with Id " + id.ToString() + " not found");
-                }
-            }
-        }
+        //[HttpGet]
+        //public HttpResponseMessage LoadEmployeeById(int id)
+        //{
+        //    using (CodehubEntities entities = new CodehubEntities())
+        //    {
+        //        var entity = entities.Employees.FirstOrDefault(e => e.Id == id);
+        //        if (entity != null)
+        //        {
+        //            return Request.CreateResponse(HttpStatusCode.OK, entity);
+        //        }
+        //        else
+        //        {
+        //            return Request.CreateErrorResponse(HttpStatusCode.NotFound,
+        //                "Employee with Id " + id.ToString() + " not found");
+        //        }
+        //    }
+        //}
 
         #endregion
 

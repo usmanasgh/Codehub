@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebAssemblyApp.Client
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebAssemblyApp.Shared", "..\BlazorWebAssemblyApp\Shared\BlazorWebAssemblyApp.Shared.csproj", "{FD501A2F-6065-43F9-BDFB-4BAB358992AC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeHub.NetCore5", "..\CodeHub.NetCore5\CodeHub.NetCore5.csproj", "{15D22ED7-FF25-4109-96D0-EA2C5B19F442}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeHub.NetCore6", "..\CodeHub.NetCore5\CodeHub.NetCore6.csproj", "{15D22ED7-FF25-4109-96D0-EA2C5B19F442}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "All_SQL", "All_SQL", "{5D22B0D8-244B-4581-803B-D9DC98C574FF}"
 EndProject

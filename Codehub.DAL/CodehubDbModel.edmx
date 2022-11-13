@@ -55,6 +55,7 @@
           <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Department" Type="int" Nullable="false" />
           <Property Name="PhotoPath" Type="nvarchar(max)" />
+          <Property Name="Gender" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_BusinessEmployees_BusinessDepartments_DepartmentId">
           <End Role="BusinessDepartments" Type="Self.BusinessDepartments" Multiplicity="1">
@@ -200,6 +201,7 @@
           <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Department" Type="Int32" Nullable="false" />
           <Property Name="PhotoPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -255,6 +257,7 @@
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="CodehubModel.Employee">
               <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
                 <ScalarProperty Name="Department" ColumnName="Department" />
                 <ScalarProperty Name="Email" ColumnName="Email" />

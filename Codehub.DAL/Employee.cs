@@ -19,5 +19,6 @@ namespace Codehub.DAL
         public string Email { get; set; }
         public int Department { get; set; }
         public string PhotoPath { get; set; }
+        public string Gender { get; set; }
     }
 }

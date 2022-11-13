@@ -20,6 +20,7 @@ namespace CodeHub.NetCore5.Models
         public string Email { get; set; }
         [Required]
         public DepartmentEnum? Department { get; set; }
+        public string Gender { get; set; }
         public string PhotoPath { get; set; }
 
         //public List<IFormFile> Photos { get; set; } // MUA : For multiple files

@@ -100,7 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CodeHub\CodeHub.csproj">
-      <Project>{3BCDB197-202B-4164-82C4-1EC365214761}</Project>
+      <Project>{3bcdb197-202b-4164-82c4-1ec365214761}</Project>
       <Name>CodeHub</Name>
     </ProjectReference>
   </ItemGroup>
