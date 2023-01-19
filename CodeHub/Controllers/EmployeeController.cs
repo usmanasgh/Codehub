@@ -7,9 +7,13 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Data.Entity;
+using System.Web.Http.Cors;
+using CodeHub.Classes;
+using System.Threading;
 
 namespace CodeHub.Controllers
 {
+    [EnableCorsAttribute("*", "*", "*")]
     public class EmployeeController : ApiController
     {
 
@@ -40,15 +44,32 @@ namespace CodeHub.Controllers
             }
         }
 
+        //[DisableCors]
+        [BasicAuthentication]
         public HttpResponseMessage Get(string gender = "All")
         {
+            string username = Thread.CurrentPrincipal.Identity.Name;
+
             using (CodehubEntities entities = new CodehubEntities())
             {
-                switch (gender.ToLower())
+                //switch (gender.ToLower())
+                //{
+                //    case "all":
+                //        return Request.CreateResponse(HttpStatusCode.OK,
+                //            entities.Employees.ToList());
+                //    case "male":
+                //        return Request.CreateResponse(HttpStatusCode.OK,
+                //            entities.Employees.Where(e => e.Gender.ToLower() == "male").ToList());
+                //    case "female":
+                //        return Request.CreateResponse(HttpStatusCode.OK,
+                //            entities.Employees.Where(e => e.Gender.ToLower() == "female").ToList());
+                //    default:
+                //        return Request.CreateErrorResponse(HttpStatusCode.BadRequest,
+                //            "Value for gender must be Male, Female or All. " + gender + " is invalid.");
+                //}
+
+                switch (username.ToLower())
                 {
-                    case "all":
-                        return Request.CreateResponse(HttpStatusCode.OK,
-                            entities.Employees.ToList());
                     case "male":
                         return Request.CreateResponse(HttpStatusCode.OK,
                             entities.Employees.Where(e => e.Gender.ToLower() == "male").ToList());
@@ -56,8 +77,7 @@ namespace CodeHub.Controllers
                         return Request.CreateResponse(HttpStatusCode.OK,
                             entities.Employees.Where(e => e.Gender.ToLower() == "female").ToList());
                     default:
-                        return Request.CreateErrorResponse(HttpStatusCode.BadRequest,
-                            "Value for gender must be Male, Female or All. " + gender + " is invalid.");
+                        return Request.CreateResponse(HttpStatusCode.BadRequest);
                 }
             }
         }

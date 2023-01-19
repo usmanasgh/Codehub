@@ -1,10 +1,14 @@
-﻿using Newtonsoft.Json.Serialization;
+﻿using CodeHub.Classes;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using System.Web.Http.Cors;
+using WebApiContrib.Formatting.Jsonp;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CodeHub
 {
@@ -53,6 +57,17 @@ namespace CodeHub
 
             config.Formatters.JsonFormatter.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
+
+            //MUA : accept:  application / javascript
+            //var jsonpFormatter = new JsonpMediaTypeFormatter(config.Formatters.JsonFormatter);
+            //config.Formatters.Insert(0, jsonpFormatter);
+
+
+            //EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");
+            //config.EnableCors();
+
+            config.Filters.Add(new RequireHttpsAttribute()); // MUA : From Classes > RequireHttpsAttribute.cs
         }
     }
 }

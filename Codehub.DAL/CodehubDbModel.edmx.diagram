@@ -12,6 +12,7 @@
         <AssociationConnector Association="CodehubModel.FK_BusinessEmployees_BusinessDepartments_DepartmentId" ManuallyRouted="false" />
         <AssociationConnector Association="CodehubModel.FK_BusinessUsers_BusinessRole_RoleId" ManuallyRouted="false" />
         <EntityTypeShape EntityType="CodehubModel.Employee" Width="1.5" PointX="9.625" PointY="1.125" />
+        <EntityTypeShape EntityType="CodehubModel.AspNetUser" Width="1.5" PointX="0.875" PointY="4" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
