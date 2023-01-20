@@ -132,6 +132,7 @@ namespace CodeHub.NetCore5
             
             services.AddControllersWithViews();
             services.AddRazorPages(); // MUA: Default service for razor pages
+            
             //services.AddMvc(); // MUA: Adding this service to run MVC 1.1
             //services.AddMvcCore();
 
@@ -219,13 +220,13 @@ namespace CodeHub.NetCore5
 
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapRazorPages();
+                endpoints.MapRazorPages();
 
                 //endpoints.MapControllers();
 
                 endpoints.MapControllerRoute(
-                   name: "default",
-                   pattern: "{controller=Home}/{action=Index}/{id?}");
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
 
             });
         }

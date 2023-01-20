@@ -1,6 +1,6 @@
 ﻿@*When adding a new employee we would not pass any ID value.
     So, make the id route parameter optional.*@
-@page "{id:min(1)?}/{handler?}"
+@page "/pages/employees/add/{id:min(1)?}/{handler?}"
 @model CodeHub.NetCore5.Pages.Employees.EditModel
 @{
     ViewData["Title"] = "Edit";
