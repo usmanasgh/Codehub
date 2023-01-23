@@ -46,6 +46,7 @@ namespace CodeHub.Controllers
 
         //[DisableCors]
         [BasicAuthentication]
+        //[RequireHttps]
         public HttpResponseMessage Get(string gender = "All")
         {
             string username = Thread.CurrentPrincipal.Identity.Name;

@@ -16,7 +16,7 @@ namespace CodeHub.Classes
     {
         public override void OnAuthorization(HttpActionContext actionContext)
         {
-            if (actionContext.Request.Headers.Authorization == null)
+            if (actionContext.Request.Headers.Authorization == null) // MUA : If header is not present
             {
                 actionContext.Response = actionContext.Request
                     .CreateResponse(HttpStatusCode.Unauthorized);
@@ -25,9 +25,11 @@ namespace CodeHub.Classes
             {
                 string authenticationToken = actionContext.Request.Headers
                                             .Authorization.Parameter;
+
                 string decodedAuthenticationToken = Encoding.UTF8.GetString(
-                    Convert.FromBase64String(authenticationToken));
-                string[] usernamePasswordArray = decodedAuthenticationToken.Split(':');
+                    Convert.FromBase64String(authenticationToken)); // MUA : Decode from base64
+
+                string[] usernamePasswordArray = decodedAuthenticationToken.Split(':'); //MUA: This will split input for username:password
                 string username = usernamePasswordArray[0];
                 string password = usernamePasswordArray[1];
 

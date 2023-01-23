@@ -18,6 +18,7 @@ namespace CodeHub.Classes
             {
                 //MUA : Converting to hash
 
+                
                 byte[] salt = new byte[16];
                 RNGCryptoServiceProvider random = new RNGCryptoServiceProvider();
                 random.GetNonZeroBytes(salt);
@@ -27,6 +28,8 @@ namespace CodeHub.Classes
 
                 var saltedBytes = Combine(salt, plainbytes);
                 var sha = sh.ComputeHash(saltedBytes);
+
+                string UserPasswordHash_Test = entities.AspNetUsers.Where(user => user.UserName == username).FirstOrDefault().PasswordHash.ToString();
 
                 return entities.AspNetUsers.Any(user =>
                        user.UserName.Equals(username, StringComparison.OrdinalIgnoreCase)
