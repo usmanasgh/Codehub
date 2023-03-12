@@ -16,24 +16,18 @@ namespace CodeHub.Classes
         {
             using (CodehubEntities entities = new CodehubEntities())
             {
-                //MUA : Converting to hash
+                var user = _userManager.Users.SingleOrDefault(p => p.PhoneNumber == model.PhoneNumber);
+                if (user == null)
+                {
+                    return RedirectToAction(nameof(Login));
+                }
 
-                
-                byte[] salt = new byte[16];
-                RNGCryptoServiceProvider random = new RNGCryptoServiceProvider();
-                random.GetNonZeroBytes(salt);
-
-                SHA384CryptoServiceProvider sh = new SHA384CryptoServiceProvider();
-                byte[] plainbytes = Encoding.ASCII.GetBytes(password);
-
-                var saltedBytes = Combine(salt, plainbytes);
-                var sha = sh.ComputeHash(saltedBytes);
-
-                string UserPasswordHash_Test = entities.AspNetUsers.Where(user => user.UserName == username).FirstOrDefault().PasswordHash.ToString();
-
-                return entities.AspNetUsers.Any(user =>
-                       user.UserName.Equals(username, StringComparison.OrdinalIgnoreCase)
-                                          && user.PasswordHash == password);
+                var result1 = _userManager.PasswordHasher.VerifyHashedPassword(user, user.PasswordHash, model.Password);
+                if (result1 != PasswordVerificationResult.Success)
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    return View(model);
+                }
             }
         }
 
